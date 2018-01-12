@@ -251,16 +251,33 @@
               
                 
               <% @subjects.each do |x| %>
+                  <script>
+                     function addRow<%= x.id %>() {
+                        var tr1 = document.createElement('tr');
+                        var tr2 = document.createElement('tr');
+                        
+                        tr1.innerHTML =
+                            '<tr><td rowspan="2"><a href="javascript:void(0);" class="btn btn_inner"><span class="btn_txt">삭제</span><!-- 삭제 --></a></td><td id="1campus"><%= x.campus %></td><td id="1subjid"><%= x.subjid %></td><td><%= x.divclass %></td><td id="1subtitle"><%= x.subjname %></td><td id="1subjpoint"><%= x.subjpoint %></td><td id="1teacher"><%= x.teacher %></td><td></td></tr>';
+                        tr2.innerHTML ='<tr><td colspan="7" class="ta_l"><%= x.tabletime %></td></tr>';
+                    
+                        document.getElementById('tbtb').appendChild(tr1);
+                        document.getElementById('tbtb').appendChild(tr2);
+                      }
+                
+                      function removeRow(input) {
+                          document.getElementById('content').removeChild(input.parentNode);
+                      }
+
+                  </script>
                   
-                  
-	                <tr style="cursor: pointer;">
+	                <tr class="ws" style="cursor: pointer;" ondblclick="addRow<%= x.id %>()">
 	                  <td>
 	                    <input type="hidden" name="subjId"  value="<%= x.subjid %>" id='subjid'>
                         <input type="hidden" name="subjNm"  value="<%= x.subjname %>" id='subjname'>
                         <input type="hidden" name="dvclsNb" value="<%= x.subjpoint %>">
                         <input type="hidden" name="opOrgid" value="2000000989">
                         <input type="hidden" name="subject_id" value="<%= x.id %>">
-                        <input type="hidden" name="user_id" value="<%= current_user.id %>"
+                        <input type="hidden" name="user_id" value="<%= current_user.id %>">
 	                    <%= x.subjid %>
 	                  </td>
 	                  <td class="ta_c"><%= x.divclass %></td>
@@ -272,8 +289,7 @@
 	                  <td><%= x.limitst %></td>
                       <td></td>
 	                </tr>
-               <% end %>
-                
+	             <% end %>
             </tbody>
           </table>
         </div>
@@ -373,36 +389,12 @@
             <th scope="col">재수강 년도학기</th><!-- 재수강년도학기 -->
           </tr>
         </thead>
-        <tbody>
+        <tbody id="tbtb">
           
             
               <%# @allsc.each do |s| %>
               
-                <tr>
-                  <td rowspan="2">
-                    <a href="javascript:void(0);" class="btn btn_inner">
-                      <span class="btn_txt">삭제</span><!-- 삭제 -->
-                    </a>
-                    <input type="hidden" name="idx" value="0">
-                    <input type="hidden" name="opOrgid" value="2000000989">
-                    <input type="hidden" name="subjId"  value="301310">
-                    <input type="hidden" name="subjNm" value="SPSS입문">
-                    <input type="hidden" name="dvclsNb" value="1">
-                    <input type="hidden" name="webAplDelPsblYn" value="1">
-                    <input type="hidden" name="tkcrsWdPsblYn" value="1">
-                    <input type="hidden" name="sznDtlWokId" value="">
-                  </td>
-                  <td><%#= s.campus %></td>
-                  <td><%#= s.subjid %></td>
-                  <td></td>
-                  <td class="ta_l">SPSS입문</td>
-                  <td><%#= s.subjpoint %></td>
-                  <td><%#= s.teacher %></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td colspan="7" class="ta_l"><%#= s.tabletime %></td>
-                </tr>
+               
               
               <%# end %>
         </tbody>
@@ -644,7 +636,7 @@
                 
                 
                 <input type="hidden" name="tueCnt" value=""></td>
-                <td>
+                <td class="cell_select">
                 
                 
                 <input type="hidden" name="wedCnt" value=""></td>

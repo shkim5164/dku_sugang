@@ -1,10 +1,28 @@
 Rails.application.routes.draw do
   devise_for :users
   post 'home/index'
-  get 'home/main'
+  root 'home#main'
   get 'home/findTkcrs'
   get 'home/login'
   post 'home/sucess'
+  
+  # <tr>
+  #                 <td rowspan="2">
+  #                   <a href="javascript:void(0);" class="btn btn_inner">
+  #                     <span class="btn_txt">삭제</span><!-- 삭제 -->
+  #                   </a>
+  #                 </td>
+  #                 <td id="1campus"><%#= s.campus %></td>
+  #                 <td id="1subjid"><%#= s.subjid %></td>
+  #                 <td></td>
+  #                 <td id="1subtitle">SPSS입문</td>
+  #                 <td id="1subjpoint"><%#= s.subjpoint %></td>
+  #                 <td id="1teacher"><%#= s.teacher %></td>
+  #                 <td></td>
+  #               </tr>
+  #               <tr>
+  #                 <td colspan="7" class="ta_l"><%#= s.tabletime %></td>
+  #               </tr>
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
