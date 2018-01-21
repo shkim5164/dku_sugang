@@ -19,7 +19,7 @@
      $('#tabs-1 tbody tr').dblclick(function(){
         $.ajax({
             url:'/home/sucess',
-            type: 'post'
+            type: 'post',
             dataType:'json',
             data : {
                 data1 : 'value' // will be accessible in $_POST['data1']
@@ -220,6 +220,7 @@
               <% @subjects.each do |x| %>
                   <script>
                     var list=[]; //신청완료내역 담을 배열
+                    var sjpcount = 0; //신청완료학점
                     
                     //더블클릭시 수강계획도우미 -> 수강신청내역 이동
                     function addRow<%= x.id %>() {
@@ -236,39 +237,57 @@
                     
                     //더블클릭시 시간표 색칠
                     function colorcell<%= x.id %>() {
-                      var day = "<%= x.tabletime %>".charAt(0);
-                      var time = "<%= x.tabletime %>".substring(1).split('(')[0].split(',');
+                      var day = "<%= x.tabletime %>".charAt(0); //첫글자 요일 받아오기
+                      var time = "<%= x.tabletime %>".substring(1).split('(')[0].split(','); //첫글자다음부터 ( 전까지 ,로 잘라서 시간 받아오기
                       var table = document.getElementById('tkcrsAplTmtblTbl');
                       
                       if (day == "월") j=1;
                       else if (day == "화") j=2;
                       else if (day == "수") j=3;
                       else if (day == "목") j=4;
-                      else j=5;
+                      else if(day == "금") j=5;
+                      else j=6;
                       
-                      for(i=1; i<=time.length; i++){
-                          table.rows[i].cells[j].classList.add("cell_select");
+                      for(i=0; i<time.length; i++){
+                        table.rows[time[i]].cells[j].classList.add("cell_select");
                       }
                     }
                     
-                    //경고창 띄우기
-                    //경고창 종류:(중복,제한인원초과,1차 수강신청 기간X(학년,주전공),재수강)
+                    //경고창 띄우기,신청완료 개수&학점 계산
+                    //경고창 종류:(중복,제한인원초과,랜덤(1차 수강신청 기간X(학년,주전공),재수강))
                     function warning<%= x.id %>(sname) {
-                      var tbtblen = document.getElementById('tbtb').rows.length/2;
+                      var excess = 35; //신청인원 수
+                      var randomlist = ["1차 수강신청 기간이 아닙니다","신청가능한 최대학점을 초과하였습니다","더블클릭+엔터를 연습하십시오","다들 올클하세용^0^","축 개강-A-"];
+                      var randomNumber = Math.floor(Math.random()*randomlist.length);
                       
-                      if(tbtblen == 0){
-                        list.push(sname);
-                        addRow<%= x.id %>();
-                        colorcell<%= x.id %>();
+                      //제한인원 초과 경고창
+                      if(excess >= <%= x.limitst %>){
+                        alert("제한인원 초과입니다");
                       }
-                      else{
-                        if(list.includes(sname)){
-                          alert("중복된 항목입니다");
-                        }
-                        else{
+                      else{//중복 경고창
+                        if(list.length == 0){
                           list.push(sname);
+                          sjpcount += <%= x.subjpoint %>;
+                          document.getElementById('listcount').innerHTML = list.length;
+                          document.getElementById('sjpcount').innerHTML = sjpcount;
                           addRow<%= x.id %>();
                           colorcell<%= x.id %>();
+                        }
+                        else{
+                          if(list.includes(sname)){
+                            alert("중복된 항목입니다");
+                          }
+                          else{
+                            if(list.length >= 3){
+                              alert(randomlist[randomNumber]);
+                            }
+                            list.push(sname);
+                            sjpcount += <%= x.subjpoint %>;
+                            document.getElementById('listcount').innerHTML = list.length;
+                            document.getElementById('sjpcount').innerHTML = sjpcount;
+                            addRow<%= x.id %>();
+                            colorcell<%= x.id %>();
+                          }
                         }
                       }
                     }
@@ -406,9 +425,9 @@
         <tbody>
           <tr>
             <th scope="row">신청과목 수</th><!-- 신청과목 수 -->
-            <td class="ta_c">4</td>
+            <td class="ta_c" id="listcount">0</td>
             <th scope="row">신청학점</th><!-- 신청학점 -->
-            <td class="ta_c">12</td>
+            <td class="ta_c" id="sjpcount">0</td>
           </tr>
         </tbody>
       </table>
