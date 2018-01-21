@@ -6,6 +6,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <title>단국대학교 수강신청 시스템</title>
       <!--<link rel="shortcut icon" type="image/x-icon" href="images/layout/favicon.ICO" />-->
+      <link rel="stylesheet" href="custom.css" />
       <link rel="stylesheet" href="/css/widgets/jquery-ui.min.css" />
       <link rel="stylesheet" href="/css/style.min.css" />
       <script src="/js/jquery/jquery-1.11.1.min.js" ></script>
@@ -51,7 +52,7 @@
     <h4 class="tit_mid">메세지</h4><!-- 메세지 -->
   </div>
 </div>
-<form id="testForm" name="testForm" method="post" action="saveDdosYn.do"></form>
+<form method="post" action="/home/sucess">
 
 <body id="body">
   <div id="wrap">
@@ -65,7 +66,7 @@
             <p>김순후(32131050)</p>
           </div>
           <!-- //my_name -->
-          <a href="logoff.do" class="btn_logout"><span class="blind">로그아웃</span></a>
+          <a href="/users/sign_out" data-method="delete" class="btn_logout"><span class="blind">로그아웃</span></a>
         </div>
       </div>
     </div>
@@ -127,7 +128,9 @@
                 <br>(3학년-2)
             </th><!-- 학기 --><!-- 학년 -->
             <th scope="row">학번</th><!-- 학번 -->
-            <td>32131050</td>
+            <td>32131050
+              <input type="hidden" name="userid" value="<%= current_user.id %>">
+            </td>
             <th scope="row">소속</th><!-- 소속 -->
             <td>상경대학 경영학부</td>
           </tr>
@@ -235,22 +238,35 @@
                     }
                     
                     //더블클릭시 시간표 색칠
-                    function colorcell<%= x.id %>() {
-                      var day = "<%= x.tabletime %>".charAt(0);
-                      var time = "<%= x.tabletime %>".substring(1).split('(')[0].split(',');
+                    function colorcell<%#= x.id %>() {
+                      var day = "<%#= x.tabletime %>".charAt(0);
+                      var time = "<%#= x.tabletime %>".substring(1).split('(')[0].split(',');
                       var table = document.getElementById('tkcrsAplTmtblTbl');
                       
                       if (day == "월") j=1;
                       else if (day == "화") j=2;
                       else if (day == "수") j=3;
                       else if (day == "목") j=4;
-                      else j=5;
+                      else if (day == "금") j=5;
+                      else j=6;
                       
-                      for(i=1; i<=time.length; i++){
-                          table.rows[i].cells[j].classList.add("cell_select");
+                      for(i=0; i<=time.length; i++){
+                          table.rows[time[i]].cells[j].classList.add("cell_select");
                       }
                     }
-                    
+                    // jquery 시간 받아오기
+                    function showTimestamp<%= x.id %>() {
+                        var ts = Date.now();
+                        jQuery("#txtTimestamp<%= x.id %>").val(ts);
+                    }
+                    //제출버튼 띄우기
+                    function addSubmit() {
+                        if (list.length == 6) {
+                            var sb_button = document.createElement('div');
+                            sb_button.innerHTML = '<input type="submit" value="결과확인하기!" class="sub_btn">';
+                            document.getElementById('Submit').appendChild(sb_button);
+                        }
+                    }
                     //경고창 띄우기
                     //경고창 종류:(중복,제한인원초과,1차 수강신청 기간X(학년,주전공),재수강)
                     function warning<%= x.id %>(sname) {
@@ -259,7 +275,10 @@
                       if(tbtblen == 0){
                         list.push(sname);
                         addRow<%= x.id %>();
+                        showTimestamp<%= x.id %>();
+                        addSubmit();
                         colorcell<%= x.id %>();
+                        
                       }
                       else{
                         if(list.includes(sname)){
@@ -268,7 +287,10 @@
                         else{
                           list.push(sname);
                           addRow<%= x.id %>();
+                          showTimestamp<%= x.id %>();
+                          addSubmit();
                           colorcell<%= x.id %>();
+                          
                         }
                       }
                     }
@@ -288,6 +310,7 @@
 	                  <td class="ta_c">35</td>
 	                  <td class="ta_l"><%= x.limitst %></td>
 	                  <td></td>
+	                  <input type="hidden" id="txtTimestamp<%= x.id %>" name="ck_time<%= x.id %>" value="">
 	                </tr>
 	             <% end %>
             </tbody>
@@ -414,8 +437,13 @@
       </table>
     </div>
   </div>
+  <div id="Submit">
+
+  </div>
   <!-- //납부예정금액 -->
 </div>
+
+</form>
 <!-- 시간표 -->
 
 <div class="f_r w_29">
@@ -443,222 +471,17 @@
         </tr>
       </thead>
       <tbody>
+          <% for i in 1..24 %>
 	          <tr>
-	            <td>1</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
+	            <td><%= i %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
 	          </tr>
-            <tr>
-	            <td>2</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-            <tr>
-	            <td>3</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>4</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>5</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>6</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>7</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>8</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>9</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>10</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>11</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>12</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>13</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>14</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>15</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>16</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>17</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>18</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>19</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>20</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>21</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>22</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>23</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
-	          <tr>
-	            <td>24</td>
-              <td><input type="hidden" name="monCnt" value=""></td>
-              <td><input type="hidden" name="tueCnt" value=""></td>
-              <td><input type="hidden" name="wedCnt" value=""></td>
-              <td><input type="hidden" name="thuCnt" value=""></td>
-              <td><input type="hidden" name="friCnt" value=""></td>
-              <td><input type="hidden" name="satCnt" value=""></td>
-	          </tr>
+          <% end %>
       </tbody>
     </table>
   </div>

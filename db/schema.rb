@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029020622) do
+ActiveRecord::Schema.define(version: 20180119134027) do
 
   create_table "subjects", force: :cascade do |t|
     t.string   "subjid"
@@ -27,13 +27,15 @@ ActiveRecord::Schema.define(version: 20171029020622) do
   end
 
   create_table "successes", force: :cascade do |t|
-    t.string   "subjid"
-    t.string   "subjname"
-    t.integer  "divclass"
-    t.integer  "subject_id"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "time_1",     limit: 8
+    t.integer  "time_2",     limit: 8
+    t.integer  "time_3",     limit: 8
+    t.integer  "time_4",     limit: 8
+    t.integer  "time_5",     limit: 8
+    t.integer  "time_6",     limit: 8
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -47,8 +49,10 @@ ActiveRecord::Schema.define(version: 20171029020622) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "last_sign_out_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.datetime "last_seen"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
