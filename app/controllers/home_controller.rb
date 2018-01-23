@@ -33,11 +33,10 @@ class HomeController < ApplicationController
   def result
     @users = User.all
     @cr_user = User.where('last_seen > ?', 5.minutes.ago)
+    @on_user = []
     @users.each do |v|
-      
       if v.last_sign_out_at.nil? or v.last_sign_in_at > v.last_sign_out_at
-        @on_user = []
-        @on_user = @on_user << v.id
+        @on_user << v.id
       end
     end
   end
