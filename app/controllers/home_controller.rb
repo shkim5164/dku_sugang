@@ -37,7 +37,7 @@ class HomeController < ApplicationController
       
       if v.last_sign_out_at.nil? or v.last_sign_in_at > v.last_sign_out_at
         @on_user = []
-        @on_user.push(v.id)
+        @on_user << v.id
       end
     end
   end
