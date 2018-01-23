@@ -31,6 +31,13 @@ class HomeController < ApplicationController
   end
   
   def result
+    @users = User.all
     @cr_user = User.where('last_seen > ?', 5.minutes.ago)
+    @users.each do |v|
+      @on_user = []
+      if v.last_sign_out_at.nil? or v.last_sign_in_at > v.last_sign_out_at
+        @on_user.push(v.id)
+      end
+    end
   end
 end
