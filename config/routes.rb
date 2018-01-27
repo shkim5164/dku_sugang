@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  root 'home#login'
   post 'home/index'
-  root 'home#main'
+  get 'home/main2'
+  post 'home/main2'
+  get 'home/main1' => 'home#main1'
   get 'home/findTkcrs'
-  get 'home/login'
   post 'home/sucess'
   get 'home/result'
+
   devise_for :users, controllers: { sessions: 'users/sessions' }
   
   # The priority is based upon order of creation: first created -> highest priority.

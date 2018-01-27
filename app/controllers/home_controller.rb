@@ -1,18 +1,25 @@
 class HomeController < ApplicationController
+  def login
+    @user = current_user
+    @users = User.all
+  end
   
   before_action :reqire_login
-  
+
   def index
   end
-  def main
+  
+  def main1
+    @subjects = Subject.all
+    @allsc = Success.all
+  end
+  
+  def main2
     @subjects = Subject.all
     @allsc = Success.all
   end
   
   def findTkcrs
-  end
-  
-  def login
   end
   
   def sucess
