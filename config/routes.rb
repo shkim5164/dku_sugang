@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
+  root 'home#login'
   post 'home/index'
-  root 'home#main'
+  get 'home/main2'
+  post 'home/main2'
+  get 'home/main1' => 'home#main1'
   get 'home/findTkcrs'
-  get 'home/login'
   post 'home/sucess'
   get 'home/result'
+
   get 'home/done'
   get 'home/my_page/:user_id' => 'home#my_page'
   get 'home/my_result/:user_id/:chasi' => 'home#my_result'

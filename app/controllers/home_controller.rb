@@ -1,10 +1,24 @@
 class HomeController < ApplicationController
-  
   before_action :reqire_login
-  
+
   def index
   end
-  def main
+  
+  def login
+    @user = current_user
+    @users = User.all
+     # 현재 로그인한 사람 카운트
+    @users = User.all
+    @cr_user = User.where('last_seen > ?', 5.minutes.ago)
+    @on_user = []
+    @users.each do |v|
+      if v.last_sign_out_at.nil? or v.last_sign_in_at > v.last_sign_out_at or v.current_sign_in_at > v.last_sign_out_at
+        @on_user << v.id
+      end
+    end
+  end
+  
+  def main1
     @subjects = Subject.all
     @allsc = Success.all
     @user_sc = Success.where(user_id: current_user.id, chasi: @chasinow)
@@ -24,19 +38,12 @@ class HomeController < ApplicationController
     end
   end
 
-  def findTkcrs
+  def main2
+    @subjects = Subject.all
+    @allsc = Success.all
   end
   
-  def login
-    # 현재 로그인한 사람 카운트
-    @users = User.all
-    @cr_user = User.where('last_seen > ?', 5.minutes.ago)
-    @on_user = []
-    @users.each do |v|
-      if v.last_sign_out_at.nil? or v.last_sign_in_at > v.last_sign_out_at or v.current_sign_in_at > v.last_sign_out_at
-        @on_user << v.id
-      end
-    end
+  def findTkcrs
   end
   
   def sucess

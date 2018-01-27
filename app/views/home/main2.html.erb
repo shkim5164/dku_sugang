@@ -29,22 +29,6 @@
 
 <body id="body">
   <div id="wrap">
-    <!-- header -->
-    <!--<div id="header">-->
-    <!--  <div class="top_sec">-->
-    <!--    <a href=""><h1><img src="/images/layout/top_logo.png" alt="DKU COURSE REGISTRATION SYSTEM" style="width: 280px"/></h1></a>-->
-    <!--    <div class="util_box">          -->
-          <!-- my_name -->
-    <!--      <div class="my_name">-->
-    <!--        <p>김순후(32131050)</p>-->
-    <!--      </div>-->
-          <!-- //my_name -->
-    <!--      <a href="/users/sign_out" data-method="delete" class="btn_logout"><span class="blind">로그아웃</span></a>-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--</div>-->
-    <!-- //header -->
-
     <!-- contents -->
     <div id="contents">
      <!-- aside -->
@@ -101,7 +85,7 @@
                 <br>(3학년-2)
             </th><!-- 학기 --><!-- 학년 -->
             <th scope="row">학번</th><!-- 학번 -->
-            <td>32131050
+            <td>32180000
               <input type="hidden" name="userid" value="<%= current_user.id %>">
             </td>
             <th scope="row">소속</th><!-- 소속 -->
@@ -109,7 +93,7 @@
           </tr>
           <tr style="height:49.25px;">
             <th scope="row">성명</th><!-- 성명 -->
-            <td>김순후</td>
+            <td>홍길동</td>
             <th scope="row">제1전공</th><!-- 제1전공 -->
             <td>상경대학 경영학부 경영학전공</td>
           </tr>
@@ -234,8 +218,8 @@
                         jQuery("#txtTimestamp<%= x.id %>").val(ts);
                     }
                     //제출버튼 띄우기
-                    function addSubmit() {
-                        if (list.length == 6) {
+                    function addSubmit<%= x.id %>() {
+                        if (<%= x.id %> == 7) {
                             var sb_button = document.createElement('div');
                             sb_button.innerHTML = '<input type="submit" value="결과확인하기!" class="sub_btn">';
                             document.getElementById('Submit').appendChild(sb_button);
@@ -262,16 +246,16 @@
                           document.getElementById('sjpcount').innerHTML = sjpcount;
                           addRow<%= x.id %>();
                           showTimestamp<%= x.id %>();
-                          addSubmit();
+                          //addSubmit();
                           colorcell<%= x.id %>();
-                          
+                          alert(randomlist[randomNumber]);
                         }
                         else{
                           if(list.includes(sname)){
                             alert("중복된 항목입니다");
                           }
                           else{
-                            if(list.length >= 3){
+                            if(list.length >= 1){
                               alert(randomlist[randomNumber]);
                             }
                             list.push(sname);
@@ -281,7 +265,7 @@
                             addRow<%= x.id %>();
                             colorcell<%= x.id %>();
                             showTimestamp<%= x.id %>();
-                            addSubmit();
+                            addSubmit<%= x.id %>();
                           }
                         }
                       
