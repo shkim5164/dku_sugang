@@ -2,6 +2,7 @@ class CreateSuccesses < ActiveRecord::Migration
   def change
     create_table :successes do |t|
       t.integer :user_id
+      t.integer :chasi
       t.integer :time_1, :limit => 8
       t.integer :time_2, :limit => 8
       t.integer :time_3, :limit => 8

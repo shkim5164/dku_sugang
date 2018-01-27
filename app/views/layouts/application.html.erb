@@ -5,9 +5,32 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="/css/widgets/jquery-ui.min.css" />
+  <link rel="stylesheet" href="/css/style.min.css" />
+  
 </head>
 <body>
+<div id="header">
+      <div class="top_sec">
+        <a href="/home/login"><h1><img src="/images/layout/top_logo.png" alt="DKU COURSE REGISTRATION SYSTEM" style="width: 280px"/></h1></a>
+        <div class="util_box">          
+          <!-- my_name -->
+          <div class="my_name">
+            <% if current_user.nil? %>
+              <a href="/users/sign_in" class="result_a">로그인</a>
+              </div>
+            <% else %>
+              <a href="/home/my_page/<%= current_user.id %>" class="result_a">내 결과보기</a>
+              <p class="name"><%= current_user.email %></p>
+              <a href="/users/sign_out" data-method="delete" class="btn_logout"></a>
+              </div>
+            <% end %>
 
+          <!-- //my_name -->
+         
+        </div>
+      </div>
+    </div>
 <%= yield %>
 
 </body>

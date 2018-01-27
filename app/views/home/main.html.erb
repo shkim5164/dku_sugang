@@ -16,34 +16,6 @@
       <script src="/js/style.min.js"></script>
     </head>
    <script>
-     var myLoc = { 'subjid': 35, 'lon': -110 };
-     $('#tabs-1 tbody tr').dblclick(function(){
-        $.ajax({
-            url:'/home/sucess',
-            type: 'post',
-            dataType:'json',
-            data : {
-                data1 : 'value' // will be accessible in $_POST['data1']
-              },
-            success:function(data){
-            }
-        })
-    })
-    
-    $( "#target" ).dblclick(function() {
-      alert( "Handler for .dblclick() called." );
-    });
-    
-    $.ajax({                    
-      url: 'content/get.php',     
-      type: 'post', // performing a POST request
-     
-      dataType: 'json',                   
-      success: function(data)         
-      {
-        // etc...
-      } 
-    });
      
    </script>
   
@@ -53,23 +25,24 @@
   </div>
 </div>
 <form method="post" action="/home/sucess">
+<!--<input type="hidden" name="user_id" value="<%#= current_user.id %>">-->
 
 <body id="body">
   <div id="wrap">
     <!-- header -->
-    <div id="header">
-      <div class="top_sec">
-        <a href=""><h1><img src="/images/layout/top_logo.png" alt="DKU COURSE REGISTRATION SYSTEM"/></h1></a>
-        <div class="util_box">          
+    <!--<div id="header">-->
+    <!--  <div class="top_sec">-->
+    <!--    <a href=""><h1><img src="/images/layout/top_logo.png" alt="DKU COURSE REGISTRATION SYSTEM" style="width: 280px"/></h1></a>-->
+    <!--    <div class="util_box">          -->
           <!-- my_name -->
-          <div class="my_name">
-            <p>김순후(32131050)</p>
-          </div>
+    <!--      <div class="my_name">-->
+    <!--        <p>김순후(32131050)</p>-->
+    <!--      </div>-->
           <!-- //my_name -->
-          <a href="/users/sign_out" data-method="delete" class="btn_logout"><span class="blind">로그아웃</span></a>
-        </div>
-      </div>
-    </div>
+    <!--      <a href="/users/sign_out" data-method="delete" class="btn_logout"><span class="blind">로그아웃</span></a>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--</div>-->
     <!-- //header -->
 
     <!-- contents -->
@@ -273,15 +246,15 @@
                     //경고창 종류:(중복,제한인원초과,랜덤(1차 수강신청 기간X(학년,주전공),재수강))
 
                     function warning<%= x.id %>(sname) {
-                      var excess = 35; //신청인원 수
+                      // var excess = 35; //신청인원 수
                       var randomlist = ["1차 수강신청 기간이 아닙니다","신청가능한 최대학점을 초과하였습니다","더블클릭+엔터를 연습하십시오","다들 올클하세용^0^","축 개강-A-"];
                       var randomNumber = Math.floor(Math.random()*randomlist.length);
 
                       //제한인원 초과 경고창
-                      if(excess >= <%= x.limitst %>){
-                        alert("제한인원 초과입니다");
-                      }
-                      else{//중복 경고창
+                      // if(excess >= <%= x.limitst %>){
+                      //   alert("제한인원 초과입니다");
+                      // }
+                      // else{//중복 경고창
                         if(list.length == 0){
                           list.push(sname);
                           sjpcount += <%= x.subjpoint %>;
@@ -311,7 +284,7 @@
                             addSubmit();
                           }
                         }
-                      }
+                      
                     }
                 
                     function removeRow(input) {
@@ -326,12 +299,13 @@
 	                  <td class="ta_l"><%= x.subjpoint %></td>
 	                  <td class="ta_c"><%= x.teacher %></td>
                     <td class="ta_l"><%= x.tabletime %></td>
-	                  <td class="ta_c">35</td>
-	                  <td class="ta_l"><%= x.limitst %></td>
+	                  <td class="ta_c"><%= @on_user.length %></td>
+	                  <td class="ta_l"><%= @on_user.length / x.limitst %></td>
 	                  <td></td>
 	                  <input type="hidden" id="txtTimestamp<%= x.id %>" name="ck_time<%= x.id %>" value="">
 	                </tr>
 	             <% end %>
+	             
             </tbody>
           </table>
         </div>
@@ -514,7 +488,7 @@
     <!-- footer -->
     <div id="footer">
       <div class="addr_box">
-        <p class="addr">죽전캠퍼스 경기도 용인시 수지구 죽전로 152 (우)16890 / 천안캠퍼스 충남 천안시 동남구 단대로 119 (우)31116</p><!-- 죽전캠퍼스 경기도 용인시 수지구 죽전로 152 (우)448-701 / 천안캠퍼스 충남 천안시 동남구 단대로 119 (우)330-714  -->
+        <p class="addr">만든이: 멋쟁이사자처럼(단국대 죽전)</p><!-- 죽전캠퍼스 경기도 용인시 수지구 죽전로 152 (우)448-701 / 천안캠퍼스 충남 천안시 동남구 단대로 119 (우)330-714  -->
         <p>Copyright(c) 2015 BY DANKOOK UNIVERSITY. All rights reserved.</p><!-- Copyright(c) 2015 BY DANKOOK UNIVERSITY. All rights reserved.  -->
       </div>
     </div>

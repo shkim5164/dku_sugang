@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <%= stylesheet_link_tag "custom" %>
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+        <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+    </head>
+    <body>
+        <h1 class="r_head"><%= @ch %>차시 결과</h1>
+            <table class="table">
+                  <thead>
+                    <tr>
+                      <th>과목</th>
+                      <th>나의 등수 / 완료한사람</th>
+                      <th>성공여부</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                            <tr>
+                                <td>
+                                    경쟁률 10:1 과목
+                                </td>
+                                <td>
+                                    <%= @rank_1 + 1 %> / <%= @ribal %>
+                                </td>
+                                <% if @rank_1 < (@ribal / 10) %>
+                                    <td class="sc">
+                                        성공
+                                    </td>
+                                <% else %>
+                                     <td class="fa">
+                                        실패
+                                    </td>
+                                <% end %>
+                            </tr>
+                            <tr class="">
+                               <td>
+                                    경쟁률 5:1 과목
+                                </td>
+                                <td class="">
+                                    <%= @rank_2 + 1 %> / <%= @ribal %>
+                                </td>
+                                <% if @rank_2 < (@ribal / 5) %>
+                                    <td class="sc">
+                                        성공
+                                    </td>
+                                <% else %>
+                                     <td class="fa">
+                                        실패
+                                    </td>
+                                <% end %>
+                            </tr>
+                             <tr class="">
+                               <td>
+                                    경쟁률 4:1 과목
+                                </td>
+                                <td class="">
+                                    <%= @rank_3 + 1 %> / <%= @ribal %>
+                                </td>
+                                <% if @rank_3 < (@ribal / 4) %>
+                                    <td class="sc">
+                                        성공
+                                    </td>
+                                <% else %>
+                                     <td class="fa">
+                                        실패
+                                    </td>
+                                <% end %>
+                            </tr>
+                             <tr class="">
+                               <td>
+                                    경쟁률 3:1 과목
+                                </td>
+                                <td class="">
+                                    <%= @rank_4 + 1 %> / <%= @ribal %>
+                                </td>
+                               <% if @rank_4 < (@ribal / 3) %>
+                                    <td class="sc">
+                                        성공
+                                    </td>
+                                <% else %>
+                                     <td class="fa">
+                                        실패
+                                    </td>
+                                <% end %>
+                            </tr>
+                             <tr class="">
+                               <td>
+                                    경쟁률 2:1 과목
+                                </td>
+                                <td class="">
+                                    <%= @rank_5 + 1 %> / <%= @ribal %>
+                                </td>
+                                <% if @rank_5 < (@ribal / 2) %>
+                                    <td class="sc">
+                                        성공
+                                    </td>
+                                <% else %>
+                                     <td class="fa">
+                                        실패
+                                    </td>
+                                <% end %>
+                            </tr>
+                            <tr class="">
+                               <td>
+                                    경쟁률 1:1 과목
+                                </td>
+                                <td class="">
+                                    <%= @rank_6 + 1 %> / <%= @ribal %>
+                                </td>
+                                <% if @rank_6 == @ribal or @rank_6 < @ribal%>
+                                    <td class="sc">
+                                        성공
+                                    </td>
+                                <% else %>
+                                     <td class="fa">
+                                        실패
+                                    </td>
+                                <% end %>
+                            </tr>
+                            
+                            <tr class="">
+                                <td id ="allset" colspan="3">
+                                    
+                                </td>
+                            </tr>
+                            <script>
+                                var str = document.body.innerText;
+                                var s = str.match(/성공/ig);
+                                var f = str.match(/실패/ig);
+                                document.getElementById('allset').innerHTML = "합계 | 성공: " + s.length + "개 실패: " + f.length + "개";
+                                
+                            </script>
+              </tbody>
+            </table>
+    </body>
+</html>

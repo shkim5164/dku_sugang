@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20180119134027) do
 
   create_table "successes", force: :cascade do |t|
     t.integer  "user_id"
+    t.integer  "chasi"
     t.integer  "time_1",     limit: 8
     t.integer  "time_2",     limit: 8
     t.integer  "time_3",     limit: 8
