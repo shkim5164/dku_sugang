@@ -11,8 +11,9 @@ a {
  text-decoration:none;
  color:inherit
 }
-/* margin-left:0*/
-/*}*/
+#body .ml_0{
+ margin-left:0
+}
 #body .ml_5 {
  margin-left:5px
 }
@@ -385,10 +386,11 @@ a {
  min-width:80px
 }
 #body .ta_l {
+ border: 1px solid #d3d3d3;
  text-align:left
 }
 #body .ta_c {
- padding-left:0;
+ border: 1px solid #d3d3d3;
  padding-right:0;
  text-align:center
 }
@@ -1187,7 +1189,7 @@ textarea {
 .btn_inner .btn_txt {
  padding:6px 8px 0 5px;
  min-width:13px;
- height:16px;
+ height:22px;
  background-position:right -155px;
  color:#78797e
 }
@@ -1386,6 +1388,7 @@ table td .btn {
  background:#ecf0f9
 }
 .tbl_row .tbl_striped tr td {
+ border: 1px solid #d3d3d3;
  background:#fff
 }
 .tbl_row .tbl_striped tr th {
@@ -1417,6 +1420,7 @@ table td .btn {
  background:#f6f6f6
 }
 .tbl_mixed tr:nth-child(even) td {
+ border: 1px solid #d3d3d3;
  background:#f9f9f9
 }
 .tbl_mixed tbody tr:hover th,.tbl_mixed tbody tr:hover td {

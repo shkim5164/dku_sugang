@@ -219,7 +219,7 @@
                     }
                     //제출버튼 띄우기
                     function addSubmit<%= x.id %>() {
-                        if (<%= x.id %> == 7) {
+                        if (<%= x.id %> == 6) {
                             var sb_button = document.createElement('div');
                             sb_button.innerHTML = '<input type="submit" value="결과확인하기!" class="sub_btn">';
                             document.getElementById('Submit').appendChild(sb_button);
@@ -246,7 +246,7 @@
                           document.getElementById('sjpcount').innerHTML = sjpcount;
                           addRow<%= x.id %>();
                           showTimestamp<%= x.id %>();
-                          //addSubmit();
+                          addSubmit<%= x.id %>();
                           colorcell<%= x.id %>();
                           alert(randomlist[randomNumber]);
                         }

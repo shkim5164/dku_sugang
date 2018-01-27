@@ -115,3 +115,15 @@ td:last-child {
 .delete:hover {
   color: #dc2a2a;
 }
+
+.notice {
+    font-size: 20px;
+    background-color: black;
+    text-align: center;
+    width: 20%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    color: white;
+}
