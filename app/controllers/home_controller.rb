@@ -1,10 +1,12 @@
 class HomeController < ApplicationController
-  def login
-    @user = current_user
-    @users = User.all
-  end
-  
   before_action :reqire_login
+  
+  def login
+    @users = User.all
+    @user = current_user
+    @useremail = @user.email
+    @usernick = @useremail.split('@')[0]
+  end
 
   def index
   end
