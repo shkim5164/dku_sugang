@@ -101,13 +101,11 @@ function enter(){
   <div class="wrap">
     <body onload="printClock()">
 	  <div id="clock"></div>
-    <a href="/users/sign_out" data-method="delete" class="loginbtn">로그아웃</a>
-    <button class="loginbtn">마이페이지</button>
-    <p style="padding-top:80px">&nbsp-> 실제 수강신청 시에는 <strong>단국대학교 서버시간</strong>을 띄어놓으세요!</p>
+    <p style="padding-top:35px; display:inline-block">&nbsp-> 실제 수강신청 시에는 <strong>단국대학교 서버시간</strong>을 띄어놓으세요!</p>
     </body>
     <div id="header">
       <form id="locale" method="get">
-      <p style="margin-top:10px; display:inline-block">현재까지 총 <span style="font-weight: bold; color:#4c6aac"><%= @users.length %>명</span>이 이용하였습니다</p>
+      <p style="margin-top:10px; margin-left:50px; display:inline-block;">현재까지 총 <span style="font-weight: bold; color:#4c6aac"><%= @users.length %>명</span>이 이용하였습니다</p>
       <div class="util_box">
         <label for="user_language">Please select a language</label>
         <select id="lang" name="lang">
@@ -156,11 +154,8 @@ function enter(){
             <dt><strong>이벤트</strong></dt>
             <dd>자신이 몇등으로 클릭했는지,얼마나 빨리 클릭해야하는지 알고싶지 않나요?<br /><strong>매일 오전10시, 오후7시부터 10분간</strong> 오픈해 동시에 접속한 사람들 중 몇등으로 눌렀는지 보여드립니다</dd>
             <dd><ul class="lst_hyphen">
-              <li><span class="lst_head">-</span>동시 접속인원이 <strong>20명 이상일때 올클</strong>을 한경우, <span style="color:red">소정의 기프티콘</span>을 드립니다!<br /> 친구들과 함께 도전하세요!!</li>
+              <li><span class="lst_head">-</span><strong>올클한 분들 중 선착순 5분께 </strong> <span style="color:red">작은 선물</span>을 드립니다 친구들과 함께 도전하세요!!<br /> (하단의 카카오톡 플러스친구로 연락주세요! 문의/건의사항도 환영합니다)</li>
             </ul></dd>
-            
-            <dt><strong>문의사항</strong></dt>
-            <dd>문의 또는 건의사항이 있다면 카카오톡 플러스친구 <strong>likeliondku</strong>로 연락주세요!<br />(어떠한 연락이라도 환영합니다*^^*)</dd>
           </div>
           <!-- //코멘트 -->
         </div>
@@ -168,12 +163,11 @@ function enter(){
     </div>
     <div id="footer">
       <div class="addr_box">
-        <p class="addr">BY 단국대(죽전) 멋쟁이사자처럼 6기 운영진</p>
-        <p>www.dkulikelion.org</p>
+        <p class="addr"><b>BY 멋쟁이사자처럼 6기 단국대(죽전) 운영진</b></p>
+        <p>카카오톡 플러스친구: @likeliondku</p>
+        <p>사이트: www.likeliondku.org</p>
       </div>
     </div>
   </div>
 </body>
 </html>
-
-<h2>Log in</h2>
