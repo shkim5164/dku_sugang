@@ -23,58 +23,6 @@ if (errorMessage != "") {
     alert(errorMessage);
 }
 
-$(document).ready(function() {
-    $("#submit").click(function(e) {
-        e.preventDefault();
-        if($("#id").val() == ''){
-        	alert("아이디를 입력하여 주세요.");
-        	return false;
-        } else {
-            $("#logonForm").submit();
-        }
-    });
-
-    $("#contents input").keydown(function(e) {
-        if(e.keyCode == 13){
-            e.preventDefault();
-            if($("#id").val() == ''){
-                alert("아이디를 입력하여 주세요.");
-                return false;
-            } else {
-                $("#logonForm").submit();
-            }
-        }
-    });
-    
-    $("#lang").val("ko").attr("selected", "selected");
-    $("#lang").change(function () {
-        if (this.value != "") {
-            $("#locale").submit();
-        }      
-    });
-    
-    $("#logonForm #id").focus();
-    $("#logonForm #id").keyup(function(e) {
-        if ($(this).val().length == 8) {
-            $("#logonForm #password").focus();
-        }
-    });
-    
-    $("#findId").on("click",function(e){
-    	e.preventDefault();
-    	var url = "findId.do";
-    	var title = "아이디 찾기";/* 아이디 찾기 */
-        window.open(url, title, "width=600, height=400, top=100 ,left=100, resizable=no, scrollbars=yes, status=no");
-     });
-    
-    $("#loginInfo").click(function(e){
-        e.preventDefault();
-        var url = "https://portal.dankook.ac.kr/web/portal/-7?p_p_id=Bbs_WAR_bbsportlet&p_p_lifecycle=0&p_p_state=normal&p_p_mode=view&_Bbs_WAR_bbsportlet_action=view_message&_Bbs_WAR_bbsportlet_messageId=414590";
-        var title = "불법 S/W 사용 의심자 안내";/* 불법 S/W 사용 의심자 안내 */
-        window.open(url, title, "width=1200, height=1600, top=100 ,left=100, resizable=yes, scrollbars=yes, status=yes");
-     });
-});
-
 //현재시간 나타내기
 function printClock() {
     var clock = document.getElementById("clock");            // 출력할 장소 선택
@@ -117,8 +65,8 @@ function checktime(){
   var currentMinute = addZeros(currentDate.getMinutes()); //분
   var currentSeconds =  addZeros(currentDate.getSeconds()); //초
 
-  if ( (currentHours == 10 || currentHours == 21) && (currentMinute <= 40) ){
-    document.getElementById('logonForm').submit(); //form 아이디
+  if ( (currentHours == 10 || currentHours == 19) && (currentMinute <= 10) ){
+    document.getElementById('logonForm').submit();
   }
 	else{
 	  alert("수강신청 리허설은 오전10시,오후7시 정각부터 10분간 열립니다");
@@ -130,11 +78,11 @@ function checktime(){
   <div class="wrap">
     <body onload="printClock()">
 	  <div id="clock"></div>
-    <p style="padding-top:80px">&nbsp-> 실제 수강신청 시에는 <strong>단국대학교 서버시간</strong>을 띄어놓으세요!</p>
+    <p style="padding-top:35px; display:inline-block">&nbsp-> 실제 수강신청 시에는 <strong>단국대학교 서버시간</strong>을 띄어놓으세요!</p>
     </body>
     <div id="header">
       <form id="locale" method="get">
-      <p style="margin-top:10px; display:inline-block">현재까지 총 <span style="font-weight: bold; color:#4c6aac"><%= @users.length %>명</span>이 이용하였습니다</p>
+      <p style="margin-top:10px; margin-left:50px; display:inline-block;">현재까지 총 <span style="font-weight: bold; color:#4c6aac"><%= @users.length %>명</span>이 이용하였습니다</p>
       <div class="util_box">
         <label for="user_language">Please select a language</label>
         <select id="lang" name="lang">
@@ -150,24 +98,17 @@ function checktime(){
         <div class="login_box">
           <h1><img src="/images/login/txt_login.png" alt="course registration system" /></h1><!-- 0427 h태그변경 -->
           <!-- 로그인 폼 -->
-          <form id="logonForm" method="post" action="main2" data-message="alert">
+          <form id="logonForm" method="post" action="home/main2" data-message="alert">
             <div class="login_frm">
               <h2>단국대학교 <span style="color:red">모의</span> 수강신청시스템 로그인</h2>
-              <ul>
-                <li><input type="text" id="id" name="id" placeholder="아이디를 입력하여 주세요." /></li>
-                <li><input type="password" id="password" name="password" placeholder="비밀번호를 입력하여 주세요." /></li>
+              <ul style="height: 50px">
+                <p style="color:white; border:1px solid white; padding:25px 5px; border-radius:5px;"><strong><%= @usernick %></strong>님 로그인이 완료되었습니다</p>
               </ul>
-              <a href="home/main1"><img src="/images/login/btn_login.png" alt="로그인" style="width:70px; height:70px" /></a>
-              <a onclick="checktime();"><img src="/images/login/btn_login.png" alt="로그인" style="width:70px; height:70px" /></a>
+              <a href="home/main1"><button class="mybtn">연습</button></a>
+              <button onclick="checktime();" type="button" class="mybtn" style="margin-left: 5px">이벤트</button>
             </div>
           </form>
           <!-- //로그인 폼 -->
-
-          <div class="find_frm">
-            <a>회원가입</a>
-            <a href="javascript:(0);" id="findId">아이디 찾기</a>
-            <a href="https://webinfo.dankook.ac.kr/member/resetPasswordForm.do?type=dku&returnurl=http://sugangp.dankook.ac.kr/logon.do ">비밀번호 찾기</a>
-          </div>
 
           <!-- 코멘트 -->
           <div class="login_txt">
@@ -182,11 +123,8 @@ function checktime(){
             <dt><strong>이벤트</strong></dt>
             <dd>자신이 몇등으로 클릭했는지,얼마나 빨리 클릭해야하는지 알고싶지 않나요?<br /><strong>매일 오전10시, 오후7시부터 10분간</strong> 오픈해 동시에 접속한 사람들 중 몇등으로 눌렀는지 보여드립니다</dd>
             <dd><ul class="lst_hyphen">
-              <li><span class="lst_head">-</span>동시 접속인원이 <strong>20명 이상일때 올클</strong>을 한경우, <span style="color:red">소정의 기프티콘</span>을 드립니다!<br /> 친구들과 함께 도전하세요!!</li>
+              <li><span class="lst_head">-</span><strong>올클한 분들 중 선착순 5분께 </strong> <span style="color:red">작은 선물</span>을 드립니다 친구들과 함께 도전하세요!!<br /> (하단의 카카오톡 플러스친구로 연락주세요! 문의/건의사항도 환영합니다)</li>
             </ul></dd>
-            
-            <dt><strong>문의사항</strong></dt>
-            <dd>문의 또는 건의사항이 있다면 카카오톡 플러스친구 <strong>likeliondku</strong>로 연락주세요!<br />(어떠한 연락이라도 환영합니다*^^*)</dd>
           </div>
           <!-- //코멘트 -->
         </div>
@@ -194,8 +132,9 @@ function checktime(){
     </div>
     <div id="footer">
       <div class="addr_box">
-        <p class="addr">BY 단국대(죽전) 멋쟁이사자처럼 6기 운영진</p>
-        <p>www.dkulikelion.org</p>
+        <p class="addr"><b>BY 멋쟁이사자처럼 6기 단국대(죽전) 운영진</b></p>
+        <p>카카오톡 플러스친구: @likeliondku</p>
+        <p>사이트: www.likeliondku.org</p>
       </div>
     </div>
   </div>

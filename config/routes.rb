@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root 'home#login'
+  root 'home#login' #첫페이지(로그인)
+  
+  get 'home/main1' #연습페이지
+  post 'home/main2' #실전페이지
+  
   post 'home/index'
-  get 'home/main2'
-  post 'home/main2'
-  get 'home/main1' => 'home#main1'
   get 'home/findTkcrs'
   post 'home/sucess'
   get 'home/result'

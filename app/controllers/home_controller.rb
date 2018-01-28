@@ -7,6 +7,8 @@ class HomeController < ApplicationController
   def login
     @user = current_user
     @users = User.all
+    @useremail = @user.email
+    @usernick = @useremail.split('@')[0]
      # 현재 로그인한 사람 카운트
     @users = User.all
     @cr_user = User.where('last_seen > ?', 5.minutes.ago)

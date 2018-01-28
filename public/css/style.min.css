@@ -625,9 +625,6 @@ textarea {
    background: url(../images/btn/btn_logout01.gif) no-repeat left top;
    float: right;
 }
-.login .wrap {
- padding-top:60px
-}
 
 .login #header {
  margin:0 auto;
@@ -636,7 +633,6 @@ textarea {
  overflow:hidden
 }
 .login #header .util_box {
- margin:0;
  background:none
 }
 .login #header .util_box label {
@@ -737,8 +733,7 @@ textarea {
  color:#737373
 }
 .login #footer {
- padding:20px 0;
- height:59px;
+ height:80px;
  border-top:0;
  background:#383d4d
 }
@@ -2429,7 +2424,6 @@ table .tbl_cont {
 }
 #footer {
  display:block;
- height:59px;
  font-size:11px;
  background:#fff;
  border-top:1px solid #e6e6e6;
@@ -2437,7 +2431,8 @@ table .tbl_cont {
 }
 .addr_box {
  padding-left:14px;
- float:left
+ float:left;
+ line-height: 15px;
 }
 .addr {
  padding:16px 0 5px;
@@ -2457,22 +2452,23 @@ table .tbl_cont {
  float:left
 }
 
-/*마이페이지, 로그아웃 버튼*/
-/*.loginbtn{*/
-/*    border:1px solid #4c6aac;*/
-/*    float:right;*/
-/*    padding:10px;*/
-/*    margin:20px 20px 0px 0px;*/
-/*}*/
-
 /* 현재 시간 box */
 #clock{
   border-bottom:3px solid #4c6aac;
   width:600px;
-  height:90px;
-  line-height:100px;
+  height:80px;
+  line-height:80px;
   color:#666;
   font-size:50px;
   text-align:center;
   float:left;
+}
+
+/* myBtn */
+.mybtn{
+  width:70px;
+  height:70px;
+  color:orange;
+  background-color:#0B3861;
+  border-radius:5px;
 }
