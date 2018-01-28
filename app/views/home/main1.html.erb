@@ -8,7 +8,7 @@
       <!--<link rel="shortcut icon" type="image/x-icon" href="images/layout/favicon.ICO" />-->
       <%= stylesheet_link_tag "custom" %>
       <link rel="stylesheet" href="/css/widgets/jquery-ui.min.css" />
-      <link rel="stylesheet" href="/css/style.min.css" />
+      <link rel="stylesheet" href="/css/style2.min.css" />
       <script src="/js/jquery/jquery-1.11.1.min.js" ></script>
       <script src="/js/placeholder/placeholders.min.js"></script>
       <script src="/js/widgets/jquery-ui.min.js" ></script>
@@ -16,35 +16,7 @@
       <script src="/js/style.min.js"></script>
     </head>
    <script>
-     var myLoc = { 'subjid': 35, 'lon': -110 };
-     $('#tabs-1 tbody tr').dblclick(function(){
-        $.ajax({
-            url:'/home/sucess',
-            type: 'post',
-            dataType:'json',
-            data : {
-                data1 : 'value' // will be accessible in $_POST['data1']
-              },
-            success:function(data){
-            }
-        })
-    })
     
-    $( "#target" ).dblclick(function() {
-      alert( "Handler for .dblclick() called." );
-    });
-    
-    $.ajax({                    
-      url: 'content/get.php',     
-      type: 'post', // performing a POST request
-     
-      dataType: 'json',                   
-      success: function(data)         
-      {
-        // etc...
-      } 
-    });
-     
    </script>
   
 <div id="message" style="display: none;">
@@ -52,7 +24,7 @@
     <h4 class="tit_mid">메세지</h4><!-- 메세지 -->
   </div>
 </div>
-<form method="post" action="/home/sucess">
+<form>
 
 <body id="body">
   <div id="wrap">
@@ -118,7 +90,7 @@
               <input type="hidden" name="userid" value="<%= current_user.id %>">
             </td>
             <th scope="row">소속</th><!-- 소속 -->
-            <td>상경대학 경영학부</td>
+            <td>대학 경영학부</td>
           </tr>
           <tr style="height:49.25px;">
             <th scope="row">성명</th><!-- 성명 -->
@@ -261,7 +233,6 @@
                           document.getElementById('listcount').innerHTML = list.length;
                           document.getElementById('sjpcount').innerHTML = sjpcount;
                           addRow<%= x.id %>();
-                          showTimestamp<%= x.id %>();
                           colorcell<%= x.id %>();
                           
                         }
@@ -279,7 +250,6 @@
                             document.getElementById('sjpcount').innerHTML = sjpcount;
                             addRow<%= x.id %>();
                             colorcell<%= x.id %>();
-                            showTimestamp<%= x.id %>();
                           }
                         }
                       }
