@@ -8,6 +8,9 @@ Rails.application.routes.draw do
   post 'home/sucess'
   get 'home/result'
 
+  get 'home/done'
+  get 'home/my_page/:user_id' => 'home#my_page'
+  get 'home/my_result/:user_id/:chasi' => 'home#my_result'
   devise_for :users, controllers: { sessions: 'users/sessions' }
   
   # The priority is based upon order of creation: first created -> highest priority.

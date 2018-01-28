@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <%= stylesheet_link_tag "custom" %>
+    </head>
+    <body>
+       <% if flash[:notice] %>
+            <div class="notice"><%= flash[:notice] %></div>
+       <% end %>
+        <h1 class="r_head">나의 결과</h1>
+    <% if @allresult == nil %>
+        <h1 class="r_head">결과가 없습니다.</h1>
+    <% else %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>차시</th>
+          <th>작성시간</th>
+        </tr>
+      </thead>
+      <tbody>
+            <% @allresult.each do |r| %>
+                <tr>
+                    <td><%= r.id %></td>
+                    <td>
+                        <a href='/home/my_result/<%= r.user_id %>/<%= r.chasi %>' class = 'titlelink'><%= r.chasi %>차시</a>
+                    </td>
+                    <td><%= r.created_at %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <% end %>
+    </body>
+</html>

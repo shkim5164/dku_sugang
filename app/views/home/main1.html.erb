@@ -56,21 +56,7 @@
 
 <body id="body">
   <div id="wrap">
-    <!-- header -->
-    <div id="header">
-      <div class="top_sec">
-        <a href=""><h1><img src="/images/layout/top_logo.png" alt="DKU COURSE REGISTRATION SYSTEM"/></h1></a>
-        <div class="util_box">          
-          <!-- my_name -->
-          <div class="my_name">
-            <p>홍길동(3218000)</p>
-          </div>
-          <!-- //my_name -->
-          <a href="/users/sign_out" data-method="delete" class="btn_logout"><span class="blind">로그아웃</span></a>
-        </div>
-      </div>
-    </div>
-    <!-- //header -->
+   
 
     <!-- contents -->
     <div id="contents">
@@ -253,11 +239,6 @@
                         table.rows[time[i]].cells[j].classList.add("cell_select");
                       }
                     }
-                    // jquery 시간 받아오기
-                    function showTimestamp<%= x.id %>() {
-                        var ts = Date.now();
-                        jQuery("#txtTimestamp<%= x.id %>").val(ts);
-                    }
                     
                     //경고창 띄우기,신청완료 개수&학점 계산
                     //경고창 종류:(중복,제한인원초과,랜덤(1차 수강신청 기간X(학년,주전공),재수강))
@@ -268,7 +249,7 @@
                       var randomNumber = Math.floor(Math.random()*randomlist.length);
 
                       //제한인원 초과 경고창
-                      if(excess >= <%= x.limitst %>){
+                      if(excess >= 50){
                         alert("제한인원 초과입니다");
                       }
                       else{//중복 경고창
@@ -315,7 +296,7 @@
 	                  <td class="ta_c"><%= x.teacher %></td>
                     <td class="ta_l"><%= x.tabletime %></td>
 	                  <td class="ta_c">35</td>
-	                  <td class="ta_l"><%= x.limitst %></td>
+	                  <td class="ta_l">50</td>
 	                  <td></td>
 	                  <input type="hidden" id="txtTimestamp<%= x.id %>" name="ck_time<%= x.id %>" value="">
 	                </tr>

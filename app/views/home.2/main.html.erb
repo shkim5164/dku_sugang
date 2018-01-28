@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+      <!--<base href="http://sugang.dankook.ac.kr:80/">-->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <title>단국대학교 수강신청 시스템</title>
+      <!--<link rel="shortcut icon" type="image/x-icon" href="images/layout/favicon.ICO" />-->
+      <%= stylesheet_link_tag "custom" %>
+      <link rel="stylesheet" href="/css/widgets/jquery-ui.min.css" />
+      <link rel="stylesheet" href="/css/style.min.css" />
+      <script src="/js/jquery/jquery-1.11.1.min.js" ></script>
+      <script src="/js/placeholder/placeholders.min.js"></script>
+      <script src="/js/widgets/jquery-ui.min.js" ></script>
+      <script src="/js/common.js"></script>
+      <script src="/js/style.min.js"></script>
+    </head>
+   <script>
+     
+   </script>
+  
+<div id="message" style="display: none;">
+  <div id="msgCont">
+    <h4 class="tit_mid">메세지</h4><!-- 메세지 -->
+  </div>
+</div>
+<form method="post" action="/home/sucess">
+
+<body id="body">
+  <div id="wrap">
+    <!-- header -->
+    <div id="header">
+      <div class="top_sec">
+        <a href=""><h1><img src="/images/layout/top_logo.png" alt="DKU COURSE REGISTRATION SYSTEM"/></h1></a>
+        <div class="util_box">          
+          <!-- my_name -->
+          <div class="my_name">
+            <p>김순후(32131050)</p>
+          </div>
+          <!-- //my_name -->
+          <a href="/users/sign_out" data-method="delete" class="btn_logout"><span class="blind">로그아웃</span></a>
+        </div>
+      </div>
+    </div>
+    <!-- //header -->
+
+    <!-- contents -->
+    <div id="contents">
+     <!-- aside -->
+      <div class="aside">
+        <div class="snb">
+          <h2 class="aside_tit">수강신청</h2>            <!-- 수강신청 -->
+          <ul class="sub_nav">
+            <li><a href="#">수강안내</a>                 <!-- 수강안내 -->
+              <ul>
+                <li><a href="#">수강안내문</a></li>           <!-- 수강안내문 -->
+                <li id="qna"><a href="#">Q&A</a></li>            <!-- Q&A -->
+                <li id="faq"><a href="#">FAQ</a></li>            <!-- FAQ -->
+              </ul>
+            </li>
+            <li><a href="javascript:void(0);">수강신청</a>                 <!-- 수강신청 -->
+              <ul>
+                <li><a href="#" id="mainInfo">수강신청</a></li>           <!-- 수강신청 -->
+                <li><a href="#">수강시간표</a></li>         <!-- 수강시간표 -->
+                <li><a href="#">수강신청확인서</a></li>        <!-- 수강신청확인서 -->
+                <li><a href="#">종합강의시간표</a></li>        <!-- 종합강의시간표 -->
+              </ul>
+            </li>
+            <li><a href="#">수강계획도우미</a>                 <!-- 수강계획도우미 -->
+              <ul>
+                  <li><a href="#">수강계획도우미 등록(학부)</a></li>   <!-- 수강계획도우미 등록(학부) -->
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- //aside -->
+
+      <!-- cont -->
+      <div class="cont">
+        <!-- 타이틀 -->
+        
+        <!-- //타이틀 -->
+
+<div class="f_l w_70">
+  <div class="clear_box">
+    <div class="f_l w_79 tbl_row">
+      <table class="tbl_striped">
+        <caption>수강신청 내 정보</caption>
+        <colgroup>
+          <col style="width: 100px" />
+          <col style="width: 12%" />
+          <col style="width: 16%" />
+          <col style="width: 12%" />
+          <col />
+        </colgroup>
+        <tbody>
+          <tr style="height:49.25px;">
+            <th scope="rowgroup" rowspan="2" class="bg_striped">2018-1학기
+                <br>(3학년-2)
+            </th><!-- 학기 --><!-- 학년 -->
+            <th scope="row">학번</th><!-- 학번 -->
+            <td>32131050
+              <input type="hidden" name="userid" value="<%= current_user.id %>">
+            </td>
+            <th scope="row">소속</th><!-- 소속 -->
+            <td>상경대학 경영학부</td>
+          </tr>
+          <tr style="height:49.25px;">
+            <th scope="row">성명</th><!-- 성명 -->
+            <td>김순후</td>
+            <th scope="row">제1전공</th><!-- 제1전공 -->
+            <td>상경대학 경영학부 경영학전공</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="f_r w_20 tbl_row">
+      <table class="tbl_type1">
+        <caption>학점</caption>
+        <colgroup>
+          <col style="width: 50%" />
+          <col />
+        </colgroup>
+        <tbody style="font-size:11px;">
+          <tr>
+            <th scope="row">최대학점</th><!-- 최대학점 -->
+            <td class="ta_c">13</td>
+          </tr>
+          <tr>
+            <th scope="row">최소학점</th><!-- 최소학점 -->
+            <td class="ta_c">12</td>
+          </tr>
+          <tr>
+            <th scope="row">초과가능</th><!-- 초과가능 -->
+            <td class="ta_c">0</td>
+          </tr>
+          <tr>
+            <th scope="row">이월학점</th><!-- 이월학점 -->
+            <td class="ta_c">1</td>
+          </tr>
+          <tr>
+            <th scope="row">이수학기</th><!-- 이수학기 -->
+            <td class="ta_c">5</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- 탭 -->
+  <div class="tabs">
+    <div class="tab_header_box" id="tabsHeader">
+      <ul class="tab_header">
+        <li><a href="#tabs-1" id="tabBtn1" tabId="1">수강계획도우미</a></li><!-- 수강계획도우미 -->
+        <li><a href="#tabs-2" id="tabBtn2" tabId="2">교과목번호-분반</a></li>
+      </ul>
+    </div>
+
+    <!-- 수강계획도우미 -->
+    <div class="tab_cont" id="tabs-1">
+      <div class="section_tbl">
+        <!-- 섹션 타이틀 -->
+        <div class="section_mid_tit">
+          <p class="ta_r">더블클릭하면 해당 강좌가 수강신청 됩니다.</p><!-- 더블클릭하면 해당 강좌가 수강신청 됩니다. -->
+        </div>
+        <!-- 섹션 타이틀 -->
+        <div class="tbl_column">
+          <table class="tbl_mixed">
+            <caption>수강계획도우미</caption>
+            <colgroup>
+              <col style="width: 55px" />
+              <col style="width: 20px" />
+              <col style="width: 130px" />
+              <col style="width: 20px" />
+              <col style="width: 55px" />
+              <col />
+              <col style="width: 38px" />
+              <col style="width: 38px" />
+              <col style="width: 35px" />
+            </colgroup>
+            <thead>
+              <tr>
+                <th scope="col">교과목<br>번호</th><!-- 교과목 -->
+                <th scope="col">분반</th><!-- 분반 -->
+                <th scope="col">교과목명</th><!-- 교과목명 -->
+                <th scope="col">학점</th><!-- 학점 -->
+                <th scope="col">교강사명</th><!-- 교강사 -->
+                <th scope="col">요일/교시/강의실</th><!-- 요일/교시/강의실 -->
+ 	              <th scope="col">신청<br/>인원</th><!-- 신청인원 -->
+	              <th scope="col">제한<br/>인원</th><!-- 제한인원 -->
+                <th scope="col">폐강</th><!-- 폐강 -->
+              </tr>
+            </thead>
+            <tbody>
+              <% @subjects.each do |x| %>
+                  <script>
+                    var list=[]; //신청완료내역 담을 배열
+                    var sjpcount = 0; //신청완료학점
+                    
+                    //더블클릭시 수강계획도우미 -> 수강신청내역 이동
+                    function addRow<%= x.id %>() {
+                      var tr1 = document.createElement('tr');
+                      var tr2 = document.createElement('tr');
+                      
+                      tr1.innerHTML =
+                          '<tr><td rowspan="2"><a href="javascript:void(0);" class="btn btn_inner"><span class="btn_txt">삭제</span><!-- 삭제 --></a></td><td id="1campus"><%= x.campus %></td><td id="1subjid"><%= x.subjid %></td><td><%= x.divclass %></td><td id="1subtitle"><%= x.subjname %></td><td id="1subjpoint"><%= x.subjpoint %></td><td id="1teacher"><%= x.teacher %></td><td></td></tr>';
+                      tr2.innerHTML ='<tr><td colspan="7" class="ta_l"><%= x.tabletime %></td></tr>';
+                    
+                      document.getElementById('tbtb').appendChild(tr1);
+                      document.getElementById('tbtb').appendChild(tr2);
+                    }
+                    
+                    //더블클릭시 시간표 색칠
+                    function colorcell<%= x.id %>() {
+                      var day = "<%= x.tabletime %>".charAt(0); //첫글자 요일 받아오기
+                      var time = "<%= x.tabletime %>".substring(1).split('(')[0].split(','); //첫글자다음부터 ( 전까지 ,로 잘라서 시간 받아오기
+                      var table = document.getElementById('tkcrsAplTmtblTbl');
+                      
+                      if (day == "월") j=1;
+                      else if (day == "화") j=2;
+                      else if (day == "수") j=3;
+                      else if (day == "목") j=4;
+                      else if(day == "금") j=5;
+                      else j=6;
+                      
+                      for(i=0; i<time.length; i++){
+                        table.rows[time[i]].cells[j].classList.add("cell_select");
+                      }
+                    }
+                    // jquery 시간 받아오기
+                    function showTimestamp<%= x.id %>() {
+                        var ts = Date.now();
+                        jQuery("#txtTimestamp<%= x.id %>").val(ts);
+                    }
+                    //제출버튼 띄우기
+                    function addSubmit() {
+                        if (list.length == 6) {
+                            var sb_button = document.createElement('div');
+                            sb_button.innerHTML = '<input type="submit" value="결과확인하기!" class="sub_btn">';
+                            document.getElementById('Submit').appendChild(sb_button);
+                        }
+                    }
+                    
+                    //경고창 띄우기,신청완료 개수&학점 계산
+                    //경고창 종류:(중복,제한인원초과,랜덤(1차 수강신청 기간X(학년,주전공),재수강))
+
+                    function warning<%= x.id %>(sname) {
+                      var excess = 35; //신청인원 수
+                      var randomlist = ["1차 수강신청 기간이 아닙니다","신청가능한 최대학점을 초과하였습니다","더블클릭+엔터를 연습하십시오","다들 올클하세용^0^","축 개강-A-"];
+                      var randomNumber = Math.floor(Math.random()*randomlist.length);
+
+                      //제한인원 초과 경고창
+                      if(excess >= <%= x.limitst %>){
+                        alert("제한인원 초과입니다");
+                      }
+                      else{//중복 경고창
+                        if(list.length == 0){
+                          list.push(sname);
+                          sjpcount += <%= x.subjpoint %>;
+                          document.getElementById('listcount').innerHTML = list.length;
+                          document.getElementById('sjpcount').innerHTML = sjpcount;
+                          addRow<%= x.id %>();
+                          showTimestamp<%= x.id %>();
+                          addSubmit();
+                          colorcell<%= x.id %>();
+                          
+                        }
+                        else{
+                          if(list.includes(sname)){
+                            alert("중복된 항목입니다");
+                          }
+                          else{
+                            if(list.length >= 3){
+                              alert(randomlist[randomNumber]);
+                            }
+                            list.push(sname);
+                            sjpcount += <%= x.subjpoint %>;
+                            document.getElementById('listcount').innerHTML = list.length;
+                            document.getElementById('sjpcount').innerHTML = sjpcount;
+                            addRow<%= x.id %>();
+                            colorcell<%= x.id %>();
+                            showTimestamp<%= x.id %>();
+                            addSubmit();
+                          }
+                        }
+                      }
+                    }
+                
+                    function removeRow(input) {
+                        document.getElementById('content').removeChild(input.parentNode);
+                    }
+                  </script>
+                  
+	                <tr class="ws" style="cursor: pointer;" ondblclick="warning<%= x.id %>('<%= x.subjname %>');">
+	                  <td class="ta_c"><%= x.subjid %></td>
+	                  <td class="ta_l"><%= x.divclass %></td>
+	                  <td class="ta_c"><%= x.subjname %></td>
+	                  <td class="ta_l"><%= x.subjpoint %></td>
+	                  <td class="ta_c"><%= x.teacher %></td>
+                    <td class="ta_l"><%= x.tabletime %></td>
+	                  <td class="ta_c">35</td>
+	                  <td class="ta_l"><%= x.limitst %></td>
+	                  <td></td>
+	                  <input type="hidden" id="txtTimestamp<%= x.id %>" name="ck_time<%= x.id %>" value="">
+	                </tr>
+	             <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- //수강계획도우미 -->
+    
+    <div class="tab_cont" id="tabs-2">
+      <!-- 교과목 분반 -->
+      <div class="section_tbl">
+        <!-- 섹션 타이틀 -->
+        <div class="section_mid_tit">
+            <p class="ta_r">교과목코드와 분반번호를 입력 후 Enter를 치면 해당 강좌가 수강신청 됩니다.</p><!-- 교과목코드와 분반번호를 입력 후 Enter를 치면 해당 강좌가 수강신청 됩니다. -->
+        </div>
+        <!-- 섹션 타이틀 -->
+        <div class="tbl_row">
+          <table id="subjTkcrsApl">
+            <caption>교과목-분반</caption>
+            <colgroup>
+              <col style="width:20%" />
+              <col style="width:20%" />
+              <col style="width:20%" />
+              <col />
+            </colgroup>
+            <tbody>
+              <tr>
+                <th scope="row">교과목번호-분반</th><!-- 교과목-분반 -->
+                <td colspan="3">
+                  <input type="text" size="23" title="교과목" id="subjId" maxlength="6"/>
+                  -
+                  <input type="text" size="5" title="분반" id="dvclsNb" maxlength="3"/>
+                  <input type="hidden" id="opOrgid">
+                  
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">교과목명</th><!-- 교과목명 -->
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <th scope="row">학점</th><!-- 학점 -->
+                <td></td>
+                <th scope="row">교강사명</th><!-- 교강사명 -->
+                <td></td>
+              </tr>
+              <tr>
+                <th scope="row">요일/교시/강의실</th><!-- 요일/교시/강의실 -->
+                <td colspan="3"></td>
+              </tr>
+              <tr>
+                <th scope="row">재수강 취득년도</th><!-- 재수강 취득년도 -->
+                <td></td>
+                <th scope="row">재수강 교과목</th><!-- 재수강 교과목 -->
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- //교과목 분반 -->
+    </div>
+  </div>
+  <!-- //탭 -->
+  <!-- 수강신청 내역 -->
+  <div class="section_tbl">
+    <!-- 섹션 타이틀 -->
+    <div class="section_mid_tit">
+      <h4 class="tit_mid">수강신청내역</h4><!-- 수강신청 내역 -->
+    </div>
+    <!-- 섹션 타이틀 -->
+    <div class="tbl_column">
+      <table class="tbl_striped tbl_column" id="tkcrsAplTbl">
+        <caption>수강신청 내역</caption>
+        <colgroup>
+          <col style="width: 60px" />
+          <col style="width: 50px" />
+          <col style="width: 70px" />
+          <col style="width: 50px" />
+          <col />
+          <col style="width: 40px" />
+          <col style="width: 100px" />
+          <col style="width: 130px" />
+        </colgroup>
+        <thead>
+          <tr>
+            <th scope="col">삭제</th><!-- 삭제 -->
+            <th scope="col">캠퍼스</th><!-- 캠퍼스 -->
+            <th scope="col">교과목번호</th><!-- 교과목 -->
+            <th scope="col">분반</th><!-- 분반 -->
+            <th scope="col">교과목명</th><!-- 교과목명 -->
+            <th scope="col">학점</th><!-- 학점 -->
+            <th scope="col">교강사명</th><!-- 교강사 -->
+            <th scope="col">재수강 년도학기</th><!-- 재수강년도학기 -->
+          </tr>
+        </thead>
+        <tbody id="tbtb">
+          
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <!-- //수강신청 내역 -->
+  <!-- 납부예정금액 --><!-- 0429 위치 변경 -->
+  <div class="section_tbl">
+    <div class="tbl_row">
+      <table>
+        <caption>납부예정 금액</caption>
+        <colgroup>
+          <col style="width: 15%" />
+          <col style="width: 15%" />
+          <col style="width: 15%" />
+          <col style="width: 15%" />
+        </colgroup>
+        <tbody>
+          <tr>
+            <th scope="row">신청과목 수</th><!-- 신청과목 수 -->
+            <td class="ta_c" id="listcount">0</td>
+            <th scope="row">신청학점</th><!-- 신청학점 -->
+            <td class="ta_c" id="sjpcount">0</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div id="Submit">
+
+  </div>
+  <!-- //납부예정금액 -->
+</div>
+
+</form>
+<!-- 시간표 -->
+
+<div class="f_r w_29">
+  <div class="tbl_importance">
+    <table id="tkcrsAplTmtblTbl"><!-- 0429 class 삭제 -->
+      <caption>시간표</caption>
+      <colgroup>
+        <col style="width: 40px; " />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+        <col />
+      </colgroup>
+      <thead>
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">월</th><!-- 월 -->
+          <th scope="col">화</th><!-- 화 -->
+          <th scope="col">수</th><!-- 수 -->
+          <th scope="col">목</th><!-- 목 -->
+          <th scope="col">금</th><!-- 금 -->
+          <th scope="col">토</th><!-- 토 -->
+        </tr>
+      </thead>
+      <tbody>
+          <% for i in 1..24 %>
+	          <tr>
+	            <td><%= i %></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+	          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<!-- //시간표 -->
+      </div>
+      <!-- //cont -->
+    </div>
+    <!-- //contents -->
+
+    <!-- footer -->
+    <div id="footer">
+      <div class="addr_box">
+        <p class="addr">죽전캠퍼스 경기도 용인시 수지구 죽전로 152 (우)16890 / 천안캠퍼스 충남 천안시 동남구 단대로 119 (우)31116</p><!-- 죽전캠퍼스 경기도 용인시 수지구 죽전로 152 (우)448-701 / 천안캠퍼스 충남 천안시 동남구 단대로 119 (우)330-714  -->
+        <p>Copyright(c) 2015 BY DANKOOK UNIVERSITY. All rights reserved.</p><!-- Copyright(c) 2015 BY DANKOOK UNIVERSITY. All rights reserved.  -->
+      </div>
+    </div>
+    <!-- //footer -->
+  </div>
+</body>
+</html>
