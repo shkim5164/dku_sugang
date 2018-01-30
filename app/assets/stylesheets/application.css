@@ -15,13 +15,9 @@
  */
 .name {
     display: inline-block;
-}
-
-.result_a {
     padding-right: 15px;
 }
 
 .result_a:hover {
     color: black;
-    padding-right: 15px;
 }

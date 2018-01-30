@@ -4,6 +4,16 @@ class Users::SessionsController < Devise::SessionsController
   # GET /resource/sign_in
   def new
     @users = User.all
+    @users_emails = []
+    # @users_pws = []
+    
+    for x in @users
+      @users_emails.push(x.email)
+    end
+    # for y in @users
+    #   @users_pws.push(y.encrypted_password)
+    # end
+    
     super
   end
 

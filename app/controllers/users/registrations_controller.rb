@@ -4,6 +4,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # GET /resource/sign_up
   def new
+    # @users = User.all
+    # @users_emails = []
+    # for x in @users
+    #   @users_emails.push(x.email)
+    # end
     super
   end
 
@@ -32,9 +37,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # in to be expired now. This is useful if the user wants to
   # cancel oauth signing in/up in the middle of the process,
   # removing all OAuth session data.
-  # def cancel
-  #   super
-  # end
+  def cancel
+    super
+  end
 
   # protected
 
