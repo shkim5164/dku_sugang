@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'devise-bootstrap-views'
 gem 'devise'
-
+gem 'pg', '~> 0.18'
 gem 'cancancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -55,5 +55,5 @@ group :development do
 end
 
 group :production do
-  gem 'pg', '~> 0.18'
+
 end
