@@ -75,16 +75,37 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 function check(){
   var id = document.getElementById('user_email');
   var pw = document.getElementById('user_password');
+  var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+  var users_emails = [];
+  // var users_pws = [];
+  
+  <% for e in @users_emails %>
+    users_emails.push("<%= e %>");
+  <% end %>
+  // <#% for p in @users_pws %>
+  //   users_pws.push("<#%= p %>");
+  // <#% end %>
+
+  // var index = users_emails.indexOf(id.value);
   
   if(id.value == ''){//이메일 입력했는지
     alert("이메일을 입력하여 주세요.");
   }
+  else if(exptext.test(id.value) == false){//이메일 형식 체크
+    alert("메일형식이 올바르지 않습니다.");
+  }
   else if(pw.value == ''){//비밀번호 입력했는지
     alert("비밀번호를 입력하여 주세요.");
   }
-  
-  
-  
+  else{//이메일이 존재하는지
+    if(!(users_emails.includes(id.value))){
+      alert("등록되지 않은 이메일입니다.");
+    }
+    else{//비밀번호가 일치하는지
+      return true;
+    }
+  }
+
   return false; //새로고침 막기`
 }
 
@@ -97,11 +118,12 @@ function enter(){
 }
 
 </script>
+
 <body id="body" class="login">
   <div class="wrap">
     <body onload="printClock()">
 	  <div id="clock"></div>
-    <p style="padding-top:35px; display:inline-block">&nbsp-> 실제 수강신청 시에는 <strong>단국대학교 서버시간</strong>을 띄어놓으세요!</p>
+    <p style="padding-top:35px; display:inline-block">&nbsp-> 실제 수강신청 시에는 <strong>단국대학교 서버시간</strong>을 참고하세요!</p>
     </body>
     <div id="header">
       <form id="locale" method="get">
@@ -122,13 +144,13 @@ function enter(){
           <h1><img src="/images/login/txt_login.png" alt="course registration system" /></h1><!-- 0427 h태그변경 -->
           <!-- 로그인 폼 -->
           <form novalidate="novalidate" class="simple_form new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post">
-            <input name="utf8" type="hidden" value="✓">
-            <input type="hidden" name="authenticity_token" value="gB7oOlEQgR3l+iTYWyeoBVRWguzBs8gU80Wtm9RllgidnT5xjj4XrKHXT1jEyo0IkhO83GSeWuS62MNrDiTqsQ==">
+            <!--<input name="utf8" type="hidden" value="✓">-->
+            <!--<input type="hidden" name="authenticity_token" value="gB7oOlEQgR3l+iTYWyeoBVRWguzBs8gU80Wtm9RllgidnT5xjj4XrKHXT1jEyo0IkhO83GSeWuS62MNrDiTqsQ==">-->
             <div class="login_frm">
               <h2>단국대학교 <span style="color:red">모의</span> 수강신청시스템 로그인</h2>
               <ul style="margin-left:50px">
                 <li><div class="input email optional user_email"><input class="string email optional" autofocus="autofocus" placeholder="이메일을 입력하여 주세요." type="email" value="" name="user[email]" id="user_email"></div></li>
-                <li><div class="input password optional user_password"><input class="password optional" placeholder="비밀번호를 입력하여 주세요." type="password" name="user[password]" id="user_password" onkeydown="enter();"></div></li>
+                <li><div class="input password optional user_password"><input class="password optional" placeholder="비밀번호를 입력하여 주세요." type="password" value="" name="user[password]" id="user_password" onkeydown="enter();"></div></li>
               </ul>
               <button onclick="return check()" class="mybtn" name="commit" value="Log in" class="btn" style="margin-left:10px">Login</button>
             </div>
@@ -137,7 +159,6 @@ function enter(){
 
           <div class="find_frm"  style="margin-left:50px">
             <a href="sign_up">회원가입</a>
-            <a href="javascript:(0);" id="findId">아이디 찾기</a>
             <a href="https://webinfo.dankook.ac.kr/member/resetPasswordForm.do?type=dku&returnurl=http://sugangp.dankook.ac.kr/logon.do ">비밀번호 찾기</a>
           </div>
 
@@ -148,13 +169,18 @@ function enter(){
             <dd><ul class="lst_hyphen">
               <li><span class="lst_head">-</span>모의 수강신청을 하기위해 <strong>아주 간단한 회원가입</strong>이 필요합니다<span style="color:red">(3초)</span></li>
               <li><span class="lst_head">-</span>본 서비스는 <strong>Chrome</strong>브라우저를 권장합니다<br />(Internet Explorer에서는 일부 기능이 작동하지 않을 수 있습니다ㅠㅠ)</li>
-              <li><span class="lst_head">-</span>실제 수강신청 작동방식을 최대한 비슷하게 구현해보고 추가 기능을 넣었습니다.<br /> <u>실제페이지와 착오 없으시길 바랍니다.</u></li>
+              <li><span class="lst_head">-</span>실제 수강신청 작동방식을 최대한 비슷하게 구현해보고 추가 기능을 넣었습니다<br /> <u>실제페이지와 착오 없으시길 바랍니다.</u></li>
             </ul></dd>
+            
+            <dt><strong>연습</strong></dt>
+            <dd>수강신청 화면을 완벽한 숙지후 올클을 하고 싶은 분들! 수강신청 전에 꼭 보고가세요^^*<br /> (실제 수강신청시에는 다수의 동시접속으로 인해 연습 페이지보다 많이 느립니다.<br /> 당황하지 말고 순서대로 빠른 더블클릭+엔터를 누르세요!)</dd>
             
             <dt><strong>이벤트</strong></dt>
             <dd>자신이 몇등으로 클릭했는지,얼마나 빨리 클릭해야하는지 알고싶지 않나요?<br /><strong>매일 오전10시, 오후7시부터 10분간</strong> 오픈해 동시에 접속한 사람들 중 몇등으로 눌렀는지 보여드립니다</dd>
             <dd><ul class="lst_hyphen">
-              <li><span class="lst_head">-</span><strong>올클한 분들 중 선착순 5분께 </strong> <span style="color:red">작은 선물</span>을 드립니다 친구들과 함께 도전하세요!!<br /> (하단의 카카오톡 플러스친구로 연락주세요! 문의/건의사항도 환영합니다)</li>
+              <li><span class="lst_head">-</span><b>더블클릭+엔터</b>의 연습을 위해 전과목에 더블클릭시 경고창이 나타나도록 하였습니다</li>
+              <li><span class="lst_head">-</span>전과목을 광클한 뒤 <b>결과 확인하기 버튼</b>까지 눌러야 기록이 저장됩니다!</li>
+              <li><span class="lst_head">-</span><b>올클한 분들 중 선착순 5분께 </b> <span style="color:red">작은 선물</span>을 드립니다 친구들과 함께 도전하세요!!<br /> (하단의 카카오톡 플러스친구로 연락주세요! 문의/건의사항도 환영합니다)</li>
             </ul></dd>
           </div>
           <!-- //코멘트 -->
@@ -165,7 +191,8 @@ function enter(){
       <div class="addr_box">
         <p class="addr"><b>BY 멋쟁이사자처럼 6기 단국대(죽전) 운영진</b></p>
         <p>카카오톡 플러스친구: @likeliondku</p>
-        <p>사이트: www.likeliondku.org</p>
+        <p class="footer_a">사이트: <a class="footer_a" href="#">www.likeliondku.org</a></p>
+        <p>페이스북: <a class="footer_a" href="https://www.facebook.com/likeliondku">www.facebook.com/likeliondku</a></p>
       </div>
     </div>
   </div>

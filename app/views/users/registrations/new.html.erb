@@ -77,12 +77,66 @@
           clear: both;
           display: table;
       }
+      
+      #checkem, #checkpw, #checkpwrp{
+        color:red;
+        margin-left: 10px;
+        display: inline;
+      }
     </style>
-<script>
-  function back(){
-     location.href="/";
-  }
-</script>
+  <script>
+    function back(){
+      location.href="sign_in";
+    }
+    function check(){
+      var id = document.getElementById('user_email');
+      var pw = document.getElementById('user_password');
+      var pwc = document.getElementById('user_password_confirmation');
+      var exptext = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+      var users_emails = [];
+      
+      <% @users = User.all %>
+      <% @users_emails = [] %>
+      <% for x in @users %>
+        <% @users_emails.push(x.email) %>
+      <% end %>
+      <% for e in @users_emails %>
+        users_emails.push("<%= e %>");
+      <% end %>
+
+      if(id.value == ''){//이메일 입력했는지
+         document.getElementById('checkem').innerHTML = "이메일을 입력하여 주세요.";
+      }
+      else if(exptext.test(id.value) == false){//이메일 형식 체크
+        document.getElementById('checkem').innerHTML = "메일형식이 올바르지 않습니다.";
+      }
+      else if(users_emails.includes(id.value)){//중복이메일 체크
+          document.getElementById('checkem').innerHTML = "이미 등록된 이메일입니다.";
+      }
+      else{
+        document.getElementById('checkem').innerHTML = "";
+        if(pw.value == ''){//비밀번호 입력했는지
+          document.getElementById('checkpw').innerHTML = "비밀번호를 입력하여 주세요.";
+        }
+        else if(pw.value.length < 6){//비밀번호가 6자리 이상인지
+          document.getElementById('checkpw').innerHTML = "비밀번호를 6자리 이상으로 설정해주세요.";
+        }
+        else{
+          document.getElementById('checkpw').innerHTML = "";
+          if(pwc.value == ''){//비밀번호 확인 입력했는지
+            document.getElementById('checkpwrp').innerHTML = "비밀번호 확인을 입력하여 주세요.";
+          }
+          else if(pw.value != pwc.value){// 비밀번호 확인과 같은지
+            document.getElementById('checkpwrp').innerHTML = "비밀번호 확인이 일치하지 않습니다.";
+          }
+          else{
+            return true;
+          }
+        }
+      }
+      return false; //새로고침 막기`
+    }
+  </script>
   </head>
   <body>
     <div id="id01" style="width:60%; margin:50px auto; border:1px solid gray;">
@@ -91,23 +145,24 @@
           <h1>회원가입</h1>
           <hr>
           <div class="input email required user_email">
-            <label class="email required" for="user_email"><abbr title="required"></abbr><b>Email</b></label>
+            <label class="email required" for="user_email"><abbr title="required"></abbr><b>Email</b></label><p id="checkem"></p>
             <input class="string email required" autofocus="autofocus" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email" placeholder="Enter Email">
           </div>
           <div class="input password required user_password field_with_hint">
-            <label class="password required" for="user_password"><abbr title="required"></abbr><b>Password</b>&nbsp<span class="hint">(6 characters minimum)</span></label>
+            <label class="password required" for="user_password"><abbr title="required"></abbr><b>Password</b>&nbsp<span class="hint">(6 characters minimum)</span></label><p id="checkpw"></p>
             <input class="password required" required="required" aria-required="true" type="password" name="user[password]" id="user_password" placeholder="Enter Password">
           </div>
           <div class="input password required user_password_confirmation">
-            <label class="password required" for="user_password_confirmation"><abbr title="required"></abbr><b>Password confirmation</b></label>
+            <label class="password required" for="user_password_confirmation"><abbr title="required"></abbr><b>Password confirmation</b></label><p id="checkpwrp"></p>
             <input class="password required" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="Repeat Password">
           </div>
           
           <div class="form-actions clearfix">
-            <button type="submit" class="signupbtn" name="commit" value="Sign up" class="btn">Sign Up</button>
+            <button type="submit" class="signupbtn" name="commit" value="Sign up" class="btn" onclick="return check()">Sign Up</button>
             <button type="button" class="cancelbtn" onclick="back();">Cancel</button>
           </div>
         </div>
+      </form>
     </div>
   </body>
 </html>
