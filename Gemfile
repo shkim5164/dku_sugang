@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'devise-bootstrap-views'
 gem 'devise'
-gem 'pg', '~> 0.18'
+
 gem 'cancancan'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -38,10 +38,12 @@ gem 'devise_lastseenable'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'figaro'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
+  gem 'sqlite3'
   gem 'rails_db'
 end
 
@@ -55,5 +57,5 @@ group :development do
 end
 
 group :production do
-
+  gem 'mysql2'
 end
