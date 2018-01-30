@@ -129,11 +129,7 @@ function enter(){
       <form id="locale" method="get">
       <p style="margin-top:10px; margin-left:50px; display:inline-block;">현재까지 총 <span style="font-weight: bold; color:#4c6aac"><%= @users.length %>명</span>이 이용하였습니다</p>
       <div class="util_box">
-        <label for="user_language">Please select a language</label>
-        <select id="lang" name="lang">
-          <option value="ko">한국어</option>
-          <option value="en">English</option>
-        </select>
+
       </div>
       </form>
     </div>
@@ -141,7 +137,7 @@ function enter(){
     <div id="contents">
       <div class="cont">
         <div class="login_box">
-          <h1><img src="/images/login/txt_login.png" alt="course registration system" /></h1><!-- 0427 h태그변경 -->
+          <h1><img src="/images/login/txt_login.png" alt="course registration system" class="loginimg" /></h1><!-- 0427 h태그변경 -->
           <!-- 로그인 폼 -->
           <form novalidate="novalidate" class="simple_form new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post">
             <!--<input name="utf8" type="hidden" value="✓">-->
