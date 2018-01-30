@@ -214,7 +214,7 @@ DEPENDENCIES
   devise_lastseenable
   jbuilder (~> 2.0)
   jquery-rails
-  pg (~> 0.20)
+  pg (~> 0.18)
   rails (= 4.2.5)
   rails_db
   sass-rails (~> 5.0)
@@ -226,4 +226,4 @@ DEPENDENCIES
   web-console (~> 2.0)
 
 BUNDLED WITH
-   1.15.4
+   1.16.1
