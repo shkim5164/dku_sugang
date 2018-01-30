@@ -12,7 +12,13 @@ Rails.application.routes.draw do
   get 'home/done'
   get 'home/my_page/:user_id' => 'home#my_page'
   get 'home/my_result/:user_id/:chasi' => 'home#my_result'
-  devise_for :users, controllers: { sessions: 'users/sessions' }
+  devise_for :users, controllers: { sessions: 'users/sessions'}
+  
+  # namespace :admin do 
+  #   devise_for :users, only: :new do 
+  #     post :generate_new_password_email 
+  #   end
+  # end
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

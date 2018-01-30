@@ -71,10 +71,18 @@ class HomeController < ApplicationController
   
   def my_page
     @allresult = Success.where(user_id: params[:user_id])
+    unless current_user.id == params[:user_id]
+       flash[:notice] = "자신의 페이지에만 접속이 가능합니다."
+      redirect_to "/home/my_page/#{params[:user_id]}"
+    end
   
   end
   
   def my_result
+    unless current_user.id == params[:user_id]
+       flash[:notice] = "자신의 페이지에만 접속이 가능합니다."
+      redirect_to "/home/my_page/#{params[:user_id]}"
+    end
     @o_1 = []
     @o_2 = []
     @o_3 = []
