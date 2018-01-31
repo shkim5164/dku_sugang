@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   get 'home/main1' #연습페이지
   post 'home/main2' #실전페이지
-  
+  get 'home/main2'
   post 'home/index'
   get 'home/findTkcrs'
   post 'home/sucess'

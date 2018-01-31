@@ -12,20 +12,20 @@
     <% else %>
     <table class="table">
       <thead>
-        <tr>
-          <th>번호</th>
+        <tr class= "th_tr_1">
+          <th class = "th_1">번호</th>
           <th>차시</th>
           <th>작성시간</th>
         </tr>
       </thead>
       <tbody>
             <% @allresult.each_with_index do |r, i| %>
-                <tr>
-                    <td><%= i+1 %></td>
-                    <td>
+                <tr class="tb_tr">
+                    <td class="tb_td"><%= i+1 %></td>
+                    <td class="tb_td">
                         <a href='/home/my_result/<%= r.user_id %>/<%= r.chasi %>' class = 'titlelink'><%= r.chasi %>차시</a>
                     </td>
-                    <td><%= r.created_at %></td>
+                    <td class="tb_td"><%= r.created_at %></td>
                 </tr>
             <% end %>
         </tbody>

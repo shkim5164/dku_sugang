@@ -21,11 +21,17 @@ class HomeController < ApplicationController
   end
   
   def main2
+     
+     unless Time.now.to_i < @time_two.to_i && Time.now.to_i > @time_one.to_i
+       redirect_to '/'
+     end
+   
+   
     @subjects = Subject.all
     @allsc = Success.all
     @user_sc = Success.where(user_id: current_user.id, chasi: @chasinow)
     unless @user_sc.empty?
-        flash[:notice] = "이미 #{@chasinow}차시를 완료하였습니다."
+        flash[:notice] = "이미 #{@chasinow}차시를 완료했거나, 시간이 만료되었습니다."
         redirect_to "/home/my_page/#{current_user.id}"
     end
     
@@ -57,10 +63,10 @@ class HomeController < ApplicationController
     @scess.time_4 = params[:ck_time4]
     @scess.time_5 = params[:ck_time5]
     @scess.time_6 = params[:ck_time6]
-    @scess.user_id = params[:userid]
+    @scess.user_id = params[:user_id]
     @scess.save
     
-    redirect_to "/home/my_result/#{@scess.user_id}/#{@scess.chasi}"
+    redirect_to "/home/my_result/#{params[:user_id]}/#{@scess.chasi}"
   end
   
   def result

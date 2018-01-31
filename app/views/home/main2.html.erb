@@ -25,7 +25,7 @@
   </div>
 </div>
 <form method="post" action="/home/sucess">
-<!--<input type="hidden" name="user_id" value="<%#= current_user.id %>">-->
+<input type="hidden" name="user_id" value="<%= current_user.id %>">
 
 <body id="body">
   <div id="wrap">
@@ -212,7 +212,7 @@
                     }
                     // jquery 시간 받아오기
                     function showTimestamp<%= x.id %>() {
-                        var ts = Date.now();
+                        var ts = <%= Time.now.to_i %>;
                         jQuery("#txtTimestamp<%= x.id %>").val(ts);
                     }
                     //제출버튼 띄우기

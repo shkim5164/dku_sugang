@@ -66,7 +66,7 @@ function checktime(){
   var currentMinute = addZeros(currentDate.getMinutes()); //분
   var currentSeconds =  addZeros(currentDate.getSeconds()); //초
 
-  if ( (currentHours == 10 || currentHours == 19) && (currentMinute <= 10) ){
+  if ( (currentHours == 18 || currentHours == 19) && (currentMinute <= 50) ){
     document.getElementById('logonForm').submit();
   }
 	else{
