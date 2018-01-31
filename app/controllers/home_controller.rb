@@ -24,7 +24,7 @@ class HomeController < ApplicationController
     @subjects = Subject.all
     @allsc = Success.all
     @user_sc = Success.where(user_id: current_user.id, chasi: @chasinow)
-    unless @user_sc.nil?
+    unless @user_sc.empty?
         flash[:notice] = "이미 #{@chasinow}차시를 완료하였습니다."
         redirect_to "/home/my_page/#{current_user.id}"
     end
