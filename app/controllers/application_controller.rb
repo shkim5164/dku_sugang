@@ -7,7 +7,16 @@ class ApplicationController < ActionController::Base
       unless user_signed_in?
         redirect_to '/users/sign_in'
       end
-    @scess.chasi = 1
+   @first_time = Time.new(2018, 01, 28, 0, 16, 44, "+00:00")
+   @second_time = Time.new(2018, 01, 28, 1, 16, 44, "+00:00")
+   
+    if Time.now.to_i < @first_time.to_i
+      @scess.chasi = 1
+    elsif @first_time.to_i < Time.now.to_i and Time.now.to_i < @second_time.to_i
+      @scess.chasi = 2
+    else
+      @scess.chasi = 3
+    end
     @chasinow = @scess.chasi
   end
 end

@@ -127,3 +127,8 @@ td:last-child {
     margin-bottom: 0;
     color: white;
 }
+
+.loginimg {
+    height: 49px;
+    width: 381px;
+}

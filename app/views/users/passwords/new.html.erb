@@ -1,15 +1,112 @@
-<h2>Forgot your password?</h2>
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {font-family: Arial;}
+      * {box-sizing: border-box}
+      /* Full-width input fields */
+      input[type=email], input[type=password] {
+          width: 100%;
+          padding: 15px;
+          margin: 5px 0 22px 0;
+          display: inline-block;
+          border: none;
+          background: #f1f1f1;
+      }
+      
+      /* Add a background color when the inputs get focus */
+      input[type=email]:focus, input[type=password]:focus {
+          background-color: #ddd;
+          outline: none;
+      }
+      
+      /* Set a style for all buttons */
+      button {
+          background-color: #4CAF50;
+          color: white;
+          padding: 14px 20px;
+          margin: 8px 0;
+          border: none;
+          cursor: pointer;
+          width: 100%;
+          opacity: 0.9;
+      }
+      
+      button:hover {
+          opacity:1;
+      }
+      
+      /* Extra styles for the cancel button */
+      .cancelbtn {
+          padding: 14px 20px;
+          background-color: #f44336;
+      }
+      
+      /* Float cancel and signup buttons and add an equal width */
+      .cancelbtn, .signupbtn {
+        float: left;
+        width: 50%;
+      }
+      
+      /* Add padding to container elements */
+      .container {
+          padding: 16px;
+      }
+      
+      h1{
+        display: block;
+        font-size: 2em;
+        font-weight: bold;
+        margin-bottom: 16px;
+      }
+      
+      /* Style the horizontal ruler */
+      hr {
+          border: 1px solid #f1f1f1;
+          margin-bottom: 25px;
+          display: block;
+          unicode-bidi: isolate;
+          overflow: hidden;
+          border-style: inset;
+          border-width: 1px;
+      }
+      
+      /* Clear floats */
+      .clearfix::after {
+          content: "";
+          clear: both;
+          display: table;
+      }
+    </style>
+<script>
+  function back(){
+     location.href="/";
+  }
+</script>
+</head>
+<body>
+  <div id="id01" style="width:60%; margin:50px auto; border:1px solid gray;">
+        <div class="form-inputs container">
+          <h2>Forgot your password?</h2>
+          <hr>
+          <%#=form_tag(admin_user_generate_new_password_email_path(@user)) do %>
+            <%#=submit_tag 'Send Reset Password Email', class: 'button', :confirm => 'Are you sure you want to email reset password instructions?' %>
+          <%# end %>
+          <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "simple_form new_user", id: "new_user" }) do |f| %>
+            <%= f.error_notification %>
+          
+            <div class="input email required user_mail">
+               <label class="email required" for="user_email"><abbr title="required"></abbr><b>Email</b></label>
+               <%= f.input :email, required: true, autofocus: true, class: "string email required" %>
+            </div>
+          
+            <div class="form-actions clearfix">
+              <%= f.button :submit, "Send me reset password instructions" %>
+            </div>
+          <% end %>
+          
+          <%= render "users/shared/links" %>
+          </div>
+    </div>
+    </body>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>

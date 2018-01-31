@@ -19,9 +19,9 @@
         </tr>
       </thead>
       <tbody>
-            <% @allresult.each do |r| %>
+            <% @allresult.each_with_index do |r, i| %>
                 <tr>
-                    <td><%= r.id %></td>
+                    <td><%= i+1 %></td>
                     <td>
                         <a href='/home/my_result/<%= r.user_id %>/<%= r.chasi %>' class = 'titlelink'><%= r.chasi %>차시</a>
                     </td>
