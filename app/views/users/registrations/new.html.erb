@@ -5,6 +5,26 @@
       body {font-family: Arial;}
       * {box-sizing: border-box}
       /* Full-width input fields */
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+      /* IE10+ CSS styles go here */
+        input[type=email], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+            height: 1%;
+        }
+        
+        /* Add a background color when the inputs get focus */
+        input[type=email]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+            height: 1%;
+        }
+      }
+      
       input[type=email], input[type=password] {
           width: 100%;
           padding: 15px;
@@ -83,6 +103,7 @@
         margin-left: 10px;
         display: inline;
       }
+      
     </style>
   <script>
     function back(){
@@ -146,15 +167,15 @@
           <hr>
           <div class="input email required user_email">
             <label class="email required" for="user_email"><abbr title="required"></abbr><b>Email</b></label><p id="checkem"></p>
-            <input class="string email required" autofocus="autofocus" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email" placeholder="Enter Email">
+            <input class="string email required" autofocus="autofocus" required="required" aria-required="true" type="email" value="" name="user[email]" id="user_email" placeholder="Enter Email" class="">
           </div>
           <div class="input password required user_password field_with_hint">
             <label class="password required" for="user_password"><abbr title="required"></abbr><b>Password</b>&nbsp<span class="hint">(6 characters minimum)</span></label><p id="checkpw"></p>
-            <input class="password required" required="required" aria-required="true" type="password" name="user[password]" id="user_password" placeholder="Enter Password">
+            <input class="password required sign_up_input" required="required" aria-required="true" type="password" name="user[password]" id="user_password" placeholder="Enter Password">
           </div>
           <div class="input password required user_password_confirmation">
             <label class="password required" for="user_password_confirmation"><abbr title="required"></abbr><b>Password confirmation</b></label><p id="checkpwrp"></p>
-            <input class="password required" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="Repeat Password">
+            <input class="password required sign_up_input" required="required" aria-required="true" type="password" name="user[password_confirmation]" id="user_password_confirmation" placeholder="Repeat Password" >
           </div>
           
           <div class="form-actions clearfix">

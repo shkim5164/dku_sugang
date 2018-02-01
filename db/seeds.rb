@@ -61,3 +61,215 @@ Subject.create([
       
       ])
 User.create(email: "a@a.com", password: 123123, password_confirmation: 123123)
+Tt.create([{
+            chch: 1,
+            mornig_time_st: Time.new(2018, 02, 01, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 01, 1, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 2,
+            mornig_time_st: Time.new(2018, 02, 01, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 01, 10, 10, 00, "+00:00").to_i
+      },{
+            chch: 3,
+            mornig_time_st: Time.new(2018, 02, 02, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 02, 1, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 4,
+            mornig_time_st: Time.new(2018, 02, 02, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 02, 10, 10, 00, "+00:00").to_i
+      },{
+            chch: 5,
+            mornig_time_st: Time.new(2018, 02, 03, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 03, 1, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 6,
+            mornig_time_st: Time.new(2018, 02, 03, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 03, 10, 10, 00, "+00:00").to_i
+      },{
+            chch: 7,
+            mornig_time_st: Time.new(2018, 02, 04, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 04, 1, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 8,
+            mornig_time_st: Time.new(2018, 02, 04, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 04, 10, 10, 00, "+00:00").to_i
+      },{
+            chch: 9,
+            mornig_time_st: Time.new(2018, 02, 05, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 05, 1, 10, 00, "+00:00").to_i
+      },
+     {
+            chch: 10,
+            mornig_time_st: Time.new(2018, 02, 05, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 05, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 11,
+            mornig_time_st: Time.new(2018, 02, 06, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 06, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 12,
+            mornig_time_st: Time.new(2018, 02, 06, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 06, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 13,
+            mornig_time_st: Time.new(2018, 02, 07, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 07, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 14,
+            mornig_time_st: Time.new(2018, 02, 07, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 07, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 15,
+            mornig_time_st: Time.new(2018, 02, 8, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 8, 1, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 16,
+            mornig_time_st: Time.new(2018, 02, 8, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 8, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 17,
+            mornig_time_st: Time.new(2018, 02, 9, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 9, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 18,
+            mornig_time_st: Time.new(2018, 02, 9, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 9, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 19,
+            mornig_time_st: Time.new(2018, 02, 10, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 10, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 20,
+            mornig_time_st: Time.new(2018, 02, 10, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 10, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 21,
+            mornig_time_st: Time.new(2018, 02, 11, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 11, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 22,
+            mornig_time_st: Time.new(2018, 02, 11, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 11, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 23,
+            mornig_time_st: Time.new(2018, 02, 12, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 12, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 24,
+            mornig_time_st: Time.new(2018, 02, 12, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 12, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 25,
+            mornig_time_st: Time.new(2018, 02, 13, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 13, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 26,
+            mornig_time_st: Time.new(2018, 02, 13, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 13, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 27,
+            mornig_time_st: Time.new(2018, 02, 14, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 14, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 28,
+            mornig_time_st: Time.new(2018, 02, 14, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 14, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 29,
+            mornig_time_st: Time.new(2018, 02, 15, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 15, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 30,
+            mornig_time_st: Time.new(2018, 02, 15, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 15, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 31,
+            mornig_time_st: Time.new(2018, 02, 16, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 16, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 32,
+            mornig_time_st: Time.new(2018, 02, 16, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 16, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 33,
+            mornig_time_st: Time.new(2018, 02, 17, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 17, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 34,
+            mornig_time_st: Time.new(2018, 02, 17, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 17, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 35,
+            mornig_time_st: Time.new(2018, 02, 18, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 18, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 36,
+            mornig_time_st: Time.new(2018, 02, 18, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 18, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 37,
+            mornig_time_st: Time.new(2018, 02, 19, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 19, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 38,
+            mornig_time_st: Time.new(2018, 02, 19, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 19, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 39,
+            mornig_time_st: Time.new(2018, 02, 20, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 20, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 40,
+            mornig_time_st: Time.new(2018, 02, 20, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 20, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 41,
+            mornig_time_st: Time.new(2018, 02, 21, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 21, 1, 10, 00, "+00:00").to_i
+      },{
+            chch: 42,
+            mornig_time_st: Time.new(2018, 02, 21, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 21, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 43,
+            mornig_time_st: Time.new(2018, 02, 22, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 22, 1, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 44,
+            mornig_time_st: Time.new(2018, 02, 22, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 22, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 45,
+            mornig_time_st: Time.new(2018, 02, 23, 1, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 23, 1, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 46,
+            mornig_time_st: Time.new(2018, 02, 23, 10, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 02, 23, 10, 10, 00, "+00:00").to_i
+      }])
+      

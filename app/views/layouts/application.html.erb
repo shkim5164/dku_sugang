@@ -1,23 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-113311473-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'UA-113311473-1');
+  </script>
+
   <title>멋사모의수강신청::단국대</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE9">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <link rel="icon" href="/favicon1.ico" type="image/x-icon">
   <link rel="stylesheet" href="/css/widgets/jquery-ui.min.css" />
-  <link rel="stylesheet" href="/css/style.min.css" />
-  
+  <link rel="stylesheet" type="text/css" href="/css/style.min.css">
+  <link rel="stylesheet" href="/css/widgets/jquery-ui.min.css" />
+  <script src="/js/jquery/jquery-1.11.1.min.js" ></script>
+  <script src="/js/placeholder/placeholders.min.js"></script>
+  <script src="/js/widgets/jquery-ui.min.js" ></script>
+  <script src="/js/common.js"></script>
+  <script src="/js/style.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 <script>
   function back(){
     location.href="/";
   }
+ 
 </script>
 <div id="header">
       <div class="top_sec">
-        <h1><img onclick="back();" src="/images/layout/top_logo.png" alt="DKU COURSE REGISTRATION SYSTEM" style="width: 280px"/></h1>
+        <h1>
+            <img onclick="back()" src="/images/layout/top_logo.png" alt="DKU COURSE REGISTRATION SYSTEM" style="width: 280px; cursor: pointer" />
+        </h1>
         <div class="util_box">          
           <!-- my_name -->
           <div class="my_name">
@@ -27,7 +49,8 @@
             <% else %>
               <p class="name"><%= current_user.email %></p>
               <a href="/home/my_page/<%= current_user.id %>" class="result_a">내 결과보기</a>
-              <a href="/users/sign_out" data-method="delete" class="btn_logout"></a>
+              <!--<a href="/users/sign_out" data-method="delete" class="btn_logout"></a>-->
+              <%= link_to '', destroy_user_session_path, method: :delete, class: "btn_logout" %>
               </div>
             <% end %>
 

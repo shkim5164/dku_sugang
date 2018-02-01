@@ -2477,3 +2477,7 @@ table .tbl_cont {
 .footer_a:hover {
   color: yellow;
 }
+
+.logo {
+ cursor: pointer;
+}

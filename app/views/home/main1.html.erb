@@ -5,7 +5,6 @@
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <title>단국대학교 수강신청 시스템</title>
-      <!--<link rel="shortcut icon" type="image/x-icon" href="images/layout/favicon.ICO" />-->
       <%= stylesheet_link_tag "custom" %>
       <link rel="stylesheet" href="/css/widgets/jquery-ui.min.css" />
       <link rel="stylesheet" href="/css/style2.min.css" />
@@ -18,9 +17,9 @@
 
       </style>
     </head>
-    <script>
-
-    </script>
+   <script>
+    $(document).ready(function(){}); 
+   </script>
   
 <div id="message" style="display: none;">
   <div id="msgCont">
@@ -181,7 +180,19 @@
             </thead>
             <tbody>
               <% @subjects.each do |x| %>
-                  <script>
+	                <tr class="ws" style="cursor: pointer;" ondblclick="warning<%= x.id %>('<%= x.subjname %>');">
+	                  <td class="ta_c"><%= x.subjid %></td>
+	                  <td class="ta_l"><%= x.divclass %></td>
+	                  <td class="ta_c"><%= x.subjname %></td>
+	                  <td class="ta_l"><%= x.subjpoint %></td>
+	                  <td class="ta_c"><%= x.teacher %></td>
+                    <td class="ta_l"><%= x.tabletime %></td>
+	                  <td class="ta_c">35</td>
+	                  <td class="ta_l">50</td>
+	                  <td></td>
+	                  <input type="hidden" id="txtTimestamp<%= x.id %>" name="ck_time<%= x.id %>" value="">
+	                </tr>
+	               <script>
                     var list=[]; //신청완료내역 담을 배열
                     var sjpcount = 0; //신청완료학점
                     
@@ -191,7 +202,7 @@
                       var tr2 = document.createElement('tr');
                       
                       tr1.innerHTML =
-                          '<tr><td rowspan="2"><a href="javascript:void(0);" class="btn btn_inner"><span class="btn_txt">삭제</span><!-- 삭제 --></a></td><td id="1campus"><%= x.campus %></td><td id="1subjid"><%= x.subjid %></td><td><%= x.divclass %></td><td id="1subtitle"><%= x.subjname %></td><td id="1subjpoint"><%= x.subjpoint %></td><td id="1teacher"><%= x.teacher %></td><td></td></tr>';
+                          '<tr><td rowspan="2"><a onclick="removeRow()" href="javascript:void(0);" class="btn btn_inner"><span class="btn_txt">삭제</span><!-- 삭제 --></a></td><td id="1campus"><%= x.campus %></td><td id="1subjid"><%= x.subjid %></td><td><%= x.divclass %></td><td id="1subtitle"><%= x.subjname %></td><td id="1subjpoint"><%= x.subjpoint %></td><td id="1teacher"><%= x.teacher %></td><td></td></tr>';
                       tr2.innerHTML ='<tr><td colspan="7" class="ta_l"><%= x.tabletime %></td></tr>';
                     
                       document.getElementById('tbtb').appendChild(tr1);
@@ -257,23 +268,10 @@
                       }
                     }
                 
-                    function removeRow(input) {
-                        document.getElementById('content').removeChild(input.parentNode);
-                    }
+                    // function removeRow(input) {
+                    //     document.getElementById('tkcrsAplTmtblTbl').removeChild(input.parentNode);
+                    // }
                   </script>
-                  
-	                <tr class="ws" style="cursor: pointer;" ondblclick="warning<%= x.id %>('<%= x.subjname %>');">
-	                  <td class="ta_c"><%= x.subjid %></td>
-	                  <td class="ta_l"><%= x.divclass %></td>
-	                  <td class="ta_c"><%= x.subjname %></td>
-	                  <td class="ta_l"><%= x.subjpoint %></td>
-	                  <td class="ta_c"><%= x.teacher %></td>
-                    <td class="ta_l"><%= x.tabletime %></td>
-	                  <td class="ta_c">35</td>
-	                  <td class="ta_l">50</td>
-	                  <td></td>
-	                  <input type="hidden" id="txtTimestamp<%= x.id %>" name="ck_time<%= x.id %>" value="">
-	                </tr>
 	             <% end %>
             </tbody>
           </table>
