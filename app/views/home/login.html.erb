@@ -83,7 +83,7 @@ function checktime(){
   var currentMinute = currentDate.getMinutes(); //분
   var currentSeconds = currentDate.getSeconds(); //초
 
-  if ( (currentHours == 18 || currentHours == 19) && (currentMinute <= 50) ){
+  if ( (currentHours == 15 || currentHours == 19) && (currentMinute <= 10) ){
     document.getElementById('logonForm').submit();
   }
 	else{

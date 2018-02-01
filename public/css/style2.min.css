@@ -2467,6 +2467,7 @@ table .tbl_cont {
 
 .tooltip{
     position: relative;
+    left: -30px;
     display: inline-block;
     color: red;
     z-index: 40;
@@ -2482,9 +2483,9 @@ table .tbl_cont {
     padding: 5px 0;
     position: absolute;
     z-index: 1;
-    bottom: 150%;
-    left: 50%;
-    margin-left: -60px;
+    bottom: 100%;
+    left: 30%;
+    margin-left: -40px;
 }
 
 .tooltip .tooltiptext::after {
@@ -2508,6 +2509,7 @@ table .tbl_cont {
 /* 3번 */
 .tooltip-bottom{
     position: relative;
+    left: -30px;
     display: inline-block;
     color: red;
     z-index: 40;
@@ -2533,7 +2535,7 @@ table .tbl_cont {
     content: "";
     position: absolute;
     bottom: 100%;
-    left: 9%;
+    left: 13%;
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
@@ -2545,4 +2547,10 @@ table .tbl_cont {
     background-color: #cccccc;
     background-color: rgba(0, 0, 0, 0.5);
     line-height: 1.5em;
+}
+
+.click {
+  position:relative;
+  top: 7px;
+  left: -5px;
 }
