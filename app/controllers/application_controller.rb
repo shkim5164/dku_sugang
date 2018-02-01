@@ -9,6 +9,8 @@ class ApplicationController < ActionController::Base
       end
     @tts = Tt.all
     @scess.chasi = 1
+    @time_one = Time.new(2018, 02, 01, 1, 00, 00, "+00:00").to_i
+    @time_two = Time.new(2018, 02, 01, 1, 10, 00, "+00:00").to_i
     @tts.each do |h|
         if h.mornig_time_st < Time.now.to_i and Time.now.to_i < h.mornig_time_end
           @scess.chasi = h.chch
