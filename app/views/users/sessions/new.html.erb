@@ -28,27 +28,44 @@ $("#loginInfo").click(function(e){
   window.open(url, title, "width=1200, height=1600, top=100 ,left=100, resizable=yes, scrollbars=yes, status=yes");
 });
 
-//현재시간 나타내기
-function printClock() {
-    var clock = document.getElementById("clock");            // 출력할 장소 선택
-    var currentDate = new Date();                                     // 현재시간
-    var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
-    var amPm = 'AM'; // 초기값 AM
-    var currentHours = addZeros(currentDate.getHours(),2); //시
-    var currentMinute = addZeros(currentDate.getMinutes() ,2); //분
-    var currentSeconds =  addZeros(currentDate.getSeconds(),2); //초
-    
-    if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
-    	amPm = 'PM';
-    	currentHours = addZeros(currentHours - 12,2);
-    }
+function srvTime(){//서버시간 불러오기
+  if (window.XMLHttpRequest) {//분기하지 않으면 IE에서만 작동된다.
+    xmlHttp = new XMLHttpRequest(); // IE 7.0 이상, 크롬, 파이어폭스 등
+    xmlHttp.open('HEAD',window.location.href.toString(),false);
+    xmlHttp.setRequestHeader("Content-Type", "text/html");
+    xmlHttp.send('');
+    return xmlHttp.getResponseHeader("Date");
+  }
+  else if (window.ActiveXObject) {
+    xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+    xmlHttp.open('HEAD',window.location.href.toString(),false);
+    xmlHttp.setRequestHeader("Content-Type", "text/html");
+    xmlHttp.send('');
+    return xmlHttp.getResponseHeader("Date");
+  }
+}
 
-    if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
-       currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
-    }
-    clock.innerHTML = "현재시간 "+currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
+//현재시간 나타내기
+function printClock(){
+  var clock = document.getElementById("clock");  // 출력할 장소 선택
+  var amPm = 'AM'; // 초기값 AM
     
-    setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
+  var st = srvTime();
+  var currentDate = new Date(st);
+  var currentHours = addZeros(currentDate.getHours(),2); //시
+  var currentMinute = addZeros(currentDate.getMinutes(),2); //분
+  var currentSeconds =  addZeros(currentDate.getSeconds(),2); //초
+    
+  if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
+  	amPm = 'PM';
+  	currentHours = addZeros(currentHours - 12,2);
+  }
+  if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
+    currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
+  }
+  clock.innerHTML = "현재시간 "+currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
+ 
+  setTimeout("printClock()",1000);   // 1초마다 printClock() 함수 호출    
 }
 
 function addZeros(num, digit) { // 자릿수 맞춰주기
@@ -155,19 +172,19 @@ function enter(){
             <dd>본 페이지는 <span style="color:orange; font-weight:bold;">멋쟁이 사자처럼 6기 운영진</span>들이 만든 모의 수강신청 페이지입니다.<br /> 수강신청을 준비하는 학생들에게 많은 도움이 되었으면 좋겠습니다 :)</dd>
             <dd><ul class="lst_hyphen">
               <li><span class="lst_head">-</span>모의 수강신청을 하기위해 <strong>아주 간단한 회원가입</strong>이 필요합니다<span style="color:red">(3초)</span></li>
-              <li><span class="lst_head">-</span>본 서비스는 <strong>Chrome</strong>브라우저를 권장합니다<br />(Internet Explorer에서는 일부 기능이 작동하지 않을 수 있습니다ㅠㅠ)</li>
+              <li><span class="lst_head">-</span>본 서비스는 <span style="color:red; font-weight:bold;">Chrome</span>브라우저를 권장합니다<br />(Internet Explorer에서는 일부 기능이 작동하지 않을 수 있습니다ㅠㅠ)</li>
               <li><span class="lst_head">-</span>실제 수강신청 작동방식을 최대한 비슷하게 구현해보고 추가 기능을 넣었습니다<br /> <u>실제페이지와 착오 없으시길 바랍니다.</u></li>
             </ul></dd>
             
             <dt><strong>연습</strong></dt>
-            <dd>수강신청 화면을 완벽한 숙지후 올클을 하고 싶은 분들! 수강신청 전에 꼭 보고가세요^^*<br /> (실제 수강신청시에는 다수의 동시접속으로 인해 연습 페이지보다 많이 느립니다.<br /> 당황하지 말고 순서대로 빠른 더블클릭+엔터를 누르세요!)</dd>
+            <dd>수강신청 화면을 완벽한 숙지후 올클을 하고 싶은 분들! 수강신청 전에 꼭 보고가세요^^*</dd>
             
             <dt><strong>이벤트</strong></dt>
             <dd>자신이 몇등으로 클릭했는지,얼마나 빨리 클릭해야하는지 알고싶지 않나요?<br /><strong>매일 오전10시, 오후7시부터 10분간</strong> 오픈해 동시에 접속한 사람들 중 몇등으로 눌렀는지 보여드립니다</dd>
             <dd><ul class="lst_hyphen">
               <li><span class="lst_head">-</span><b>더블클릭+엔터</b>의 연습을 위해 전과목에 더블클릭시 경고창이 나타나도록 하였습니다</li>
               <li><span class="lst_head">-</span>전과목을 광클한 뒤 <b>결과 확인하기 버튼</b>까지 눌러야 기록이 저장됩니다!</li>
-              <li><span class="lst_head">-</span><b>올클한 분들 중 선착순 5분께 </b> <span style="color:red">작은 선물</span>을 드립니다 친구들과 함께 도전하세요!!<br /> (하단의 카카오톡 플러스친구로 연락주세요! 문의/건의사항도 환영합니다)</li>
+              <li><span class="lst_head">-</span><b>올클한 분들 중 선착순 5분께 </b> <span style="color:red;">작은 선물</span>을 드립니다 친구들과 함께 도전하세요!!<br /> (하단의 카카오톡 플러스친구로 연락주세요! 문의/건의사항도 환영합니다)</li>
             </ul></dd>
           </div>
           <!-- //코멘트 -->
@@ -178,8 +195,8 @@ function enter(){
       <div class="addr_box">
         <p class="addr"><b>BY 멋쟁이사자처럼 6기 단국대(죽전) 운영진</b></p>
         <p>카카오톡 플러스친구: @likeliondku</p>
-        <p class="footer_a">사이트: <a class="footer_a" href="#">www.likeliondku.org</a></p>
-        <p>페이스북: <a class="footer_a" href="https://www.facebook.com/likeliondku">www.facebook.com/likeliondku</a></p>
+        <p class="footer_a">사이트: <a class="footer_a" href="https://likeliondku.herokuapp.com" target="_blank">likeliondku.herokuapp.com</a></p>
+        <p>페이스북: <a class="footer_a" href="https://www.facebook.com/likeliondku" target="_blank">www.facebook.com/likeliondku</a></p>
       </div>
     </div>
   </div>
