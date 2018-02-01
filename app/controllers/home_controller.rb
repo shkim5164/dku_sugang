@@ -21,11 +21,6 @@ class HomeController < ApplicationController
   end
   
   def main2
-     
-    # unless Time.now.to_i < @time_two.to_i && Time.now.to_i > @time_one.to_i
-    #   redirect_to '/'
-    # end
-   
    
     @subjects = Subject.all
     @allsc = Success.all
