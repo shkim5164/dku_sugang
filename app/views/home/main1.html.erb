@@ -14,10 +14,13 @@
       <script src="/js/widgets/jquery-ui.min.js" ></script>
       <script src="/js/common.js"></script>
       <script src="/js/style.min.js"></script>
+      <style>
+
+      </style>
     </head>
-   <script>
-    
-   </script>
+    <script>
+
+    </script>
   
 <div id="message" style="display: none;">
   <div id="msgCont">
@@ -28,8 +31,6 @@
 
 <body id="body">
   <div id="wrap">
-   
-
     <!-- contents -->
     <div id="contents">
      <!-- aside -->
@@ -83,7 +84,7 @@
         <tbody>
           <tr style="height:49.25px;">
             <th scope="rowgroup" rowspan="2" class="bg_striped">2018-1학기
-                <br>(3학년-2)
+                <br>(1학년-1)
             </th><!-- 학기 --><!-- 학년 -->
             <th scope="row">학번</th><!-- 학번 -->
             <td>32180000</td>
@@ -109,7 +110,7 @@
         <tbody style="font-size:11px;">
           <tr>
             <th scope="row">최대학점</th><!-- 최대학점 -->
-            <td class="ta_c">13</td>
+            <td class="ta_c">19</td>
           </tr>
           <tr>
             <th scope="row">최소학점</th><!-- 최소학점 -->
@@ -121,11 +122,11 @@
           </tr>
           <tr>
             <th scope="row">이월학점</th><!-- 이월학점 -->
-            <td class="ta_c">1</td>
+            <td class="ta_c">0</td>
           </tr>
           <tr>
             <th scope="row">이수학기</th><!-- 이수학기 -->
-            <td class="ta_c">5</td>
+            <td class="ta_c">1</td>
           </tr>
         </tbody>
       </table>
@@ -133,6 +134,9 @@
   </div>
   <!-- 탭 -->
   <div class="tabs">
+    <div class="tooltip" style="top: 20px; left: 10px;">①
+      <span class="tooltiptext" style="width:600px;">수강계획 도우미에 담아놨던 과목들이 아래와 같이 나타납니다 빠르게 <span style="color:yellow;">더블클릭+엔터</span>를 해주세요<br>(엔터는 혹시모를 경고창발생을 빠르게 닫고 다음과목을 누르기 위함입니다)</span>
+    </div>
     <div class="tab_header_box" id="tabsHeader">
       <ul class="tab_header">
         <li><a href="#tabs-1" id="tabBtn1" tabId="1">수강계획도우미</a></li><!-- 수강계획도우미 -->
@@ -338,6 +342,9 @@
   <div class="section_tbl">
     <!-- 섹션 타이틀 -->
     <div class="section_mid_tit">
+      <div class="tooltip" style="top: 7px; left: 7px;">②
+        <span class="tooltiptext" style="width:500px;">더블클릭하면 <span style="color:yellow;">성공</span>한 과목들은 밑으로 내려오고 오른쪽 시간표에 색칠되어집니다</span>
+      </div>
       <h4 class="tit_mid">수강신청내역</h4><!-- 수강신청 내역 -->
     </div>
     <!-- 섹션 타이틀 -->
@@ -393,6 +400,10 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div class="tooltip-bottom" style="top: 20px; left: 7px;">③
+      <span class="tooltiptext-bottom">실제 수강신청시에는 동시접속자가 매우 많기 때문에 화면이 변하지 않아 멈춘것처럼 보일 수 있습니다<br>
+      하지만 적용은 되고 있으니 빠르게 광클합시다!! <span style="color:yellow">새로고침(F5)은 충분히 여러번 클릭한 뒤에</span> 하세요 </span>
     </div>
   </div>
   <div id="Submit">

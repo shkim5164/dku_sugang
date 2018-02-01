@@ -20,31 +20,48 @@
 </head>
 <script type="text/javascript">
 var errorMessage = "";
+var xmlHttp;
 if (errorMessage != "") {
     alert(errorMessage);
 }
 
-//현재시간 나타내기
-function printClock() {
-    var clock = document.getElementById("clock");            // 출력할 장소 선택
-    var currentDate = new Date();                                     // 현재시간
-    var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
-    var amPm = 'AM'; // 초기값 AM
-    var currentHours = addZeros(currentDate.getHours(),2); //시
-    var currentMinute = addZeros(currentDate.getMinutes() ,2); //분
-    var currentSeconds =  addZeros(currentDate.getSeconds(),2); //초
-    
-    if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
-    	amPm = 'PM';
-    	currentHours = addZeros(currentHours - 12,2);
-    }
+function srvTime(){//서버시간 불러오기
+  if (window.XMLHttpRequest) {//분기하지 않으면 IE에서만 작동된다.
+    xmlHttp = new XMLHttpRequest(); // IE 7.0 이상, 크롬, 파이어폭스 등
+    xmlHttp.open('HEAD',window.location.href.toString(),false);
+    xmlHttp.setRequestHeader("Content-Type", "text/html");
+    xmlHttp.send('');
+    return xmlHttp.getResponseHeader("Date");
+  }
+  else if (window.ActiveXObject) {
+    xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+    xmlHttp.open('HEAD',window.location.href.toString(),false);
+    xmlHttp.setRequestHeader("Content-Type", "text/html");
+    xmlHttp.send('');
+    return xmlHttp.getResponseHeader("Date");
+  }
+}
 
-    if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
-       currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
-    }
-    clock.innerHTML = "현재시간 "+currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
+function printClock(){
+  var clock = document.getElementById("clock");  // 출력할 장소 선택
+  var amPm = 'AM'; // 초기값 AM
     
-    setTimeout("printClock()",1000);         // 1초마다 printClock() 함수 호출
+  var st = srvTime();
+  var currentDate = new Date(st);
+  var currentHours = addZeros(currentDate.getHours(),2); //시
+  var currentMinute = addZeros(currentDate.getMinutes(),2); //분
+  var currentSeconds =  addZeros(currentDate.getSeconds(),2); //초
+    
+  if(currentHours >= 12){ // 시간이 12보다 클 때 PM으로 세팅, 12를 빼줌
+  	amPm = 'PM';
+  	currentHours = addZeros(currentHours - 12,2);
+  }
+  if(currentSeconds >= 50){// 50초 이상일 때 색을 변환해 준다.
+    currentSeconds = '<span style="color:#de1951;">'+currentSeconds+'</span>'
+  }
+  clock.innerHTML = "현재시간 "+currentHours+":"+currentMinute+":"+currentSeconds +" <span style='font-size:50px;'>"+ amPm+"</span>"; //날짜를 출력해 줌
+ 
+  setTimeout("printClock()",1000);   // 1초마다 printClock() 함수 호출    
 }
 
 function addZeros(num, digit) { // 자릿수 맞춰주기
@@ -60,11 +77,11 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 
 //리허설? 열리는 시간 체크
 function checktime(){
-  var currentDate = new Date();  // 현재시간
-  var calendar = currentDate.getFullYear() + "-" + (currentDate.getMonth()+1) + "-" + currentDate.getDate() // 현재 날짜
-  var currentHours = addZeros(currentDate.getHours()); //시
-  var currentMinute = addZeros(currentDate.getMinutes()); //분
-  var currentSeconds =  addZeros(currentDate.getSeconds()); //초
+  var st = srvTime();
+  var currentDate = new Date(st);
+  var currentHours = currentDate.getHours(); //시
+  var currentMinute = currentDate.getMinutes(); //분
+  var currentSeconds = currentDate.getSeconds(); //초
 
   if ( (currentHours == 10 || currentHours == 19) && (currentMinute <= 10) ){
     document.getElementById('logonForm').submit();
@@ -118,7 +135,7 @@ function checktime(){
             </ul></dd>
             
             <dt><strong>연습</strong></dt>
-            <dd>수강신청 화면을 완벽한 숙지후 올클을 하고 싶은 분들! 수강신청 전에 꼭 보고가세요^^*<br /> (실제 수강신청시에는 다수의 동시접속으로 인해 연습 페이지보다 많이 느립니다.<br /> 당황하지 말고 순서대로 빠른 더블클릭+엔터를 누르세요!)</dd>
+            <dd>수강신청 화면을 완벽한 숙지후 올클을 하고 싶은 분들! 수강신청 전에 꼭 보고가세요^^*</dd>
             
             <dt><strong>이벤트</strong></dt>
             <dd>자신이 몇등으로 클릭했는지,얼마나 빨리 클릭해야하는지 알고싶지 않나요?<br /><strong>매일 오전10시, 오후7시부터 10분간</strong> 오픈해 동시에 접속한 사람들 중 몇등으로 눌렀는지 보여드립니다</dd>
