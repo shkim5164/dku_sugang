@@ -122,3 +122,11 @@ body {
     height: 49px;
     width: 381px;
 }
+
+.watch {
+  text-align: center;
+}
+
+.top {
+  margin-top: 30px;
+}

@@ -22,8 +22,7 @@ class HomeController < ApplicationController
   
   def main2
     unless @time_one < Time.now.to_i and Time.now.to_i < @time_two
-        flash[:notice] = "이미 #{@chasinow}차시를 완료했거나, 시간이 만료되었습니다."
-        redirect_to "/home/my_page/#{current_user.id}"
+        redirect_to "/"
     end
     @subjects = Subject.all
     @allsc = Success.all
