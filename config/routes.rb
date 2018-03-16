@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get 'home/my_result/:user_id/:chasi' => 'home#my_result'
   devise_for :users, controllers: { sessions: 'users/sessions'}
   
+  
+  get 'home/loading'
   # namespace :admin do 
   #   devise_for :users, only: :new do 
   #     post :generate_new_password_email 

@@ -1,6 +1,11 @@
 class HomeController < ApplicationController
   before_action :reqire_login
 
+
+  def loading
+  end
+  
+  
   def index
   end
   
