@@ -95,8 +95,8 @@ Tt.create([{
             mornig_time_end: Time.new(2018, 8, 12, 10, 10, 00, "+00:00").to_i
       },{
             chch: 7,
-            mornig_time_st: Time.new(2018, 8, 13, 1, 00, 00, "+00:00").to_i,
-            mornig_time_end: Time.new(2018, 8, 13, 1, 10, 00, "+00:00").to_i
+            mornig_time_st: Time.new(2018, 8, 13, 0, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 8, 13, 0, 10, 00, "+00:00").to_i
       },
       {
             chch: 8,
@@ -104,8 +104,8 @@ Tt.create([{
             mornig_time_end: Time.new(2018, 8, 13, 10, 10, 00, "+00:00").to_i
       },{
             chch: 9,
-            mornig_time_st: Time.new(2018, 8, 14, 1, 00, 00, "+00:00").to_i,
-            mornig_time_end: Time.new(2018, 8, 14, 1, 10, 00, "+00:00").to_i
+            mornig_time_st: Time.new(2018, 8, 14, 0, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 8, 14, 0, 10, 00, "+00:00").to_i
       },
      {
             chch: 10,
@@ -132,19 +132,19 @@ Tt.create([{
       },
       {
             chch: 15,
-            mornig_time_st: Time.new(2018, 8, 17, 1, 00, 00, "+00:00").to_i,
-            mornig_time_end: Time.new(2018, 8, 17, 1, 10, 00, "+00:00").to_i
+            mornig_time_st: Time.new(2018, 8, 17, 0, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 8, 17, 0, 10, 00, "+00:00").to_i
       },
       {
             chch: 16,
             mornig_time_st: Time.new(2018, 8, 17, 10, 00, 00, "+00:00").to_i,
             mornig_time_end: Time.new(2018, 8, 17, 10, 10, 00, "+00:00").to_i
+      },
+      {
+            chch: 17,
+            mornig_time_st: Time.new(2018, 8, 20, 0, 00, 00, "+00:00").to_i,
+            mornig_time_end: Time.new(2018, 8, 20, 0, 10, 00, "+00:00").to_i
       }
-      # {
-      #       chch: 17,
-      #       mornig_time_st: Time.new(2018, 8, 9, 3, 00, 00, "+00:00").to_i,
-      #       mornig_time_end: Time.new(2018, 8, 9, 3, 30, 00, "+00:00").to_i
-      # }
      #----------------------------------------------------------------------------
       # {
       #       chch: 17,
