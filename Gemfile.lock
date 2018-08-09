@@ -217,6 +217,7 @@ DEPENDENCIES
   figaro
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mysql2
   rails (= 4.2.5)
   rails_db

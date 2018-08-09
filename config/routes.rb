@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  get 'board/index'
+  get 'board/create'
+
   root 'home#login' #첫페이지(로그인)
   
   get 'home/main1' #연습페이지

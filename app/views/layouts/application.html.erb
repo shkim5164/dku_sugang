@@ -27,6 +27,7 @@
   <script src="/js/style.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 
 </head>
 <body>
 <script>
@@ -43,6 +44,8 @@
         <div class="util_box">          
           <!-- my_name -->
           <div class="my_name">
+            <a href="/board/index" class="result_a">방명록가기</a>
+            <span>  |  </span>
             <% if current_user.nil? %>
               <a href="/users/sign_in" class="result_a">로그인</a>
               </div>
