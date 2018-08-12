@@ -83,11 +83,11 @@ function checktime(){
   var currentMinute = currentDate.getMinutes(); //분
   var currentSeconds = currentDate.getSeconds(); //초
 
-  if ( (currentHours == 10 || currentHours == 19) && (currentMinute <= 10) ){
+  if ( (currentHours == 9 || currentHours == 19) && (currentMinute <= 10) ){
     document.getElementById('logonForm').submit();
   }
 	else{
-	  alert("수강신청 리허설은 일정기간 오전10시, 오후7시 정각부터 10분간 열립니다. 기간 (8/10~8/17)");
+	  alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (8/10~8/17)");
 	}
 }
 
