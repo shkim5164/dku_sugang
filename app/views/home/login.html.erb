@@ -79,16 +79,29 @@ function addZeros(num, digit) { // 자릿수 맞춰주기
 function checktime(){
   var st = srvTime();
   var currentDate = new Date(st);
+  var currentDay = currentDate.getDate(); //일
   var currentHours = currentDate.getHours(); //시
   var currentMinute = currentDate.getMinutes(); //분
   var currentSeconds = currentDate.getSeconds(); //초
 
-  if ( (currentHours == 9 || currentHours == 19) && (currentMinute <= 10) ){
+  //수강신청 당일은 이벤트 오전9시 오픈
+  if(currentDay==13 || currentDay==14 || currentDay==17 || currentDay==20){
+    if ( (currentHours == 9 || currentHours == 19) && (currentMinute <= 10) ){
     document.getElementById('logonForm').submit();
+    }
+	  else{
+	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (8/10~8/17)");
+	  }
   }
-	else{
-	  alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (8/10~8/17)");
-	}
+  //수강신청 당일 외에는 이벤트 오전10시 오픈
+  else{
+    if ( (currentHours == 10 || currentHours == 19) && (currentMinute <= 10) ){
+    document.getElementById('logonForm').submit();
+    }
+	  else{
+	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (8/10~8/17)");
+	  }
+  }
 }
 
 </script>
