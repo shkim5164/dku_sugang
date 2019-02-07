@@ -84,13 +84,13 @@ function checktime(){
   var currentMinute = currentDate.getMinutes(); //분
   var currentSeconds = currentDate.getSeconds(); //초
 
-  //수강신청 당일은 이벤트 오전9시 오픈
-  if(currentDay==13 || currentDay==14 || currentDay==17 || currentDay==20){
+  //수강신청 당일은 이벤트 오전9시, 오후7시 10분간 오픈
+  if(currentDay==11 || currentDay==12 || currentDay==14 || currentDay==15){
     if ( (currentHours == 9 || currentHours == 19) && (currentMinute <= 10) ){
     document.getElementById('logonForm').submit();
     }
 	  else{
-	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (8/10~8/17)");
+	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (2/7~2/15)");
 	  }
   }
   //수강신청 당일 외에는 이벤트 오전10시 오픈
@@ -99,7 +99,7 @@ function checktime(){
     document.getElementById('logonForm').submit();
     }
 	  else{
-	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (8/10~8/17)");
+	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (2/7~2/15)");
 	  }
   }
 }
@@ -151,7 +151,7 @@ function checktime(){
             
             <dt><strong>이벤트</strong></dt>
             <dd>자신이 몇등으로 클릭했는지,얼마나 빨리 클릭해야하는지 알고싶지 않나요?<br /><strong>매일 오전10시, 오후7시부터 10분간</strong> 오픈해 동시에 접속한 사람들 중 몇등으로 눌렀는지 보여드립니다</dd>
-            <dd>이벤트 날짜 및 시간 확인하기 -> <a href="http://shkim5164.github.io/dd/" class="footer_a" target="_blank">http://shkim5164.github.io/dd/</a></dd>
+            <dd>이벤트 날짜 및 시간 확인하기 -> <a href="/timetable/tt" class="footer_a" target="_blank" style="color:blue; font-weight:bold;">이벤트 시간표</a></dd>
             <dd><ul class="lst_hyphen">
               <li><span class="lst_head">-</span><b>더블클릭+엔터</b>의 연습을 위해 전과목에 더블클릭시 경고창이 나타나도록 하였습니다</li>
               <li><span class="lst_head">-</span>전과목을 광클한 뒤 <b>결과 확인하기 버튼</b>까지 눌러야 기록이 저장됩니다!</li>

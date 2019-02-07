@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'timetable/tt'
+
   get 'board/index'
   get 'board/create'
 
@@ -11,6 +13,8 @@ Rails.application.routes.draw do
   get 'home/findTkcrs'
   post 'home/sucess'
   get 'home/result'
+  
+  get 'timetable/tt'
 
   get 'home/done'
   get 'home/my_page/:user_id' => 'home#my_page'
