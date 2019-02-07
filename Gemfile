@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'figaro'
-gem 'rails_db'
+ gem 'mysql2'
 
 gem 'devise-bootstrap-views'
 gem 'devise'
