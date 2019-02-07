@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'rails_db'
+gem 'figaro'
+gem 'sqlite3'
+
 gem 'devise-bootstrap-views'
 gem 'devise'
 
@@ -39,13 +43,9 @@ gem 'devise_lastseenable'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'figaro'
-
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'sqlite3'
-  gem 'rails_db'
 end
 
 group :development do
@@ -55,8 +55,4 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-end
-
-group :production do
-  gem 'mysql2'
 end
