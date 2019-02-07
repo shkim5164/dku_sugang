@@ -40,12 +40,11 @@ gem 'devise_lastseenable'
 # gem 'capistrano-rails', group: :development
 
 gem 'figaro'
-gem 'sqlite3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  
+  gem 'sqlite3'
   gem 'rails_db'
 end
 
@@ -59,6 +58,5 @@ group :development do
 end
 
 group :production do
-  gem 'bundler'
   gem 'mysql2'
 end
