@@ -85,12 +85,12 @@ function checktime(){
   var currentSeconds = currentDate.getSeconds(); //초
 
   //수강신청 당일은 이벤트 오전9시, 오후7시 10분간 오픈
-  if(currentDay==11 || currentDay==12 || currentDay==14 || currentDay==15){
+  if(currentDay==22){
     if ( (currentHours == 9 || currentHours == 19) && (currentMinute <= 10) ){
     document.getElementById('logonForm').submit();
     }
 	  else{
-	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (2/7~2/15)");
+	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (2/7~2/22)");
 	  }
   }
   //수강신청 당일 외에는 이벤트 오전10시 오픈
@@ -99,7 +99,7 @@ function checktime(){
     document.getElementById('logonForm').submit();
     }
 	  else{
-	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (2/7~2/15)");
+	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (2/7~2/22)");
 	  }
   }
 }
