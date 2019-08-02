@@ -14,8 +14,8 @@ $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 ```
 $ bundle update
 ```
-- 기초 작업
+- 로컬작업시 기초 작업
 ```
-$ rake db:migrate
+$ rake db:migrate RAILS_ENV=development
 $ rake db:seed
 ```
