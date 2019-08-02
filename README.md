@@ -10,9 +10,12 @@ $ rbenv local 2.6.0
 $ brew install openssl
 $ export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/
 ```
-
 - Overstack 등의 이상한 에러 대응
 ```
 $ bundle update
 ```
-
+- 기초 작업
+```
+$ rake db:migrate
+$ rake db:seed
+```
