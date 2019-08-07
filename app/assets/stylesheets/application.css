@@ -21,3 +21,21 @@
 .result_a:hover {
     color: black;
 }
+
+
+.colabo-banner {
+    text-align: center; 
+    padding: 20px; 
+    border-bottom:1px solid silver; 
+    background-size: contain; 
+    background-image:url('http://www.plthink.com/shopimages/plthink/0080320005622.jpg?1538385520');
+    font-size: 20px;
+  }
+  .colabo-banner:hover {
+  font-weight: 800;
+  }
+  .colabo-logos {
+  margin-left: 5px;
+  width: 30px; 
+  border-radius: 50%;
+  }

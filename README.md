@@ -19,3 +19,12 @@ $ bundle update
 $ rake db:migrate RAILS_ENV=development
 $ rake db:seed
 ```
+
+## 배포하기
+* 디비 마이그레이션
+    * rake db:create RAILS_ENV=production
+    * rake db:migrate RAILS_ENV=production
+    * rake db:seed RAILS_ENV=production
+* 에셋 준비 
+  * rake assets:precompile RAILS_ENV=production
+* 수강신청 서비스 Passenger 커맨드 - https://hcn1519.github.io/articles/2016-02/rails_passenger_nginx

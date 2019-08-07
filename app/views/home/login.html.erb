@@ -16,7 +16,11 @@
   <script src="/js/common.js"></script>
   <script src="/js/style.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <%
+=begin%>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+<%
+=end%>
 </head>
 <script type="text/javascript">
 var errorMessage = "";
@@ -99,13 +103,27 @@ function checktime(){
     document.getElementById('logonForm').submit();
     }
 	  else{
-	    alert("수강신청 리허설은 일정기간 오전10시(수강신청 당일은 오전9시), 오후7시 정각부터 10분간 열립니다. 기간 (2/7~2/22)");
+	    alert("수강신청 리허설은 일정기간 오전10시, 오후7시 정각부터 10분간 열립니다.");
 	  }
   }
 }
 
 </script>
 <body id="body" class="login">
+  <a href="https://forms.gle/3PyEP8fja2uSF45z6" target="_blank">
+    <div class="colabo-banner">
+      멋사<img 
+            src="https://dankookie.s3.ap-northeast-2.amazonaws.com/static/clubs/likelion/likelion-logo.png" 
+            alt="프로필"
+            class="colabo-logos">  
+      & 
+      단쿠키<img 
+            src="https://dankookie.s3.ap-northeast-2.amazonaws.com/resized/profile/s/20181015233858374.jpg" 
+            alt="프로필"
+            class="colabo-logos"> 
+      설명회 신청하기
+    </div>
+  </a>
   <div class="wrap">
     <body onload="printClock()">
 	  <div id="clock"></div>
